@@ -3,7 +3,7 @@ import "./globals.css";
 import BackToTopButton from "./components/BackToTopButton";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://wedding-pheakdey-dinin.vercel.app"),
+  metadataBase: new URL("https://pheakdey-dinin.vercel.app"),
   title: "Pheakdey & Dinin Wedding Invitation - ភក្តី និង ឌីនីន",
   description:
     "Join us in celebrating the wedding of Lmut Pheakdey & Srorn Dinin on February 27, 2026 at Koh Dach Village, Phnom Penh",
@@ -13,13 +13,13 @@ export const metadata: Metadata = {
     title: "Pheakdey & Dinin Wedding Invitation",
     description:
       "Join us in celebrating the wedding of Lmut Pheakdey & Srorn Dinin on February 27, 2026 at Koh Dach Village, Phnom Penh",
-    url: "https://wedding-pheakdey-dinin.vercel.app",
+    url: "https://pheakdey-dinin.vercel.app",
     siteName: "Pheakdey & Dinin Wedding",
     type: "website",
     images: [
       {
-        url: "https://wedding-pheakdey-dinin.vercel.app/og-image.png",
-        secureUrl: "https://wedding-pheakdey-dinin.vercel.app/og-image.png",
+        url: "https://pheakdey-dinin.vercel.app/og-image.png",
+        secureUrl: "https://pheakdey-dinin.vercel.app/og-image.png",
         width: 1200,
         height: 630,
         alt: "Pheakdey & Dinin Wedding Invitation - February 27, 2026",
@@ -36,13 +36,13 @@ export const metadata: Metadata = {
       "Join us in celebrating the wedding of Lmut Pheakdey & Srorn Dinin on February 27, 2026 at Koh Dach Village, Phnom Penh",
     images: [
       {
-        url: "https://wedding-pheakdey-dinin.vercel.app/og-image.png",
+        url: "https://pheakdey-dinin.vercel.app/og-image.png",
         alt: "Pheakdey & Dinin Wedding Invitation",
       },
     ],
   },
   other: {
-    "telegram:image": "https://wedding-pheakdey-dinin.vercel.app/og-image.png",
+    "telegram:image": "https://pheakdey-dinin.vercel.app/og-image.png",
     "telegram:title": "Pheakdey & Dinin Wedding Invitation",
     "telegram:description": "Join us in celebrating the wedding on February 27, 2026",
   },
