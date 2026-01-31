@@ -41,9 +41,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-  facebook: {
-    appId: "1234567890", // Optional: Replace with your actual Facebook App ID if you have one
-  },
   other: {
     "telegram:image": "https://pheakdey-dinin.vercel.app/preview_link_image.jpg",
     "telegram:title": "Pheakdey & Dinin Wedding Invitation",
