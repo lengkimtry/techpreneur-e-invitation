@@ -18,12 +18,12 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://pheakdey-dinin.vercel.app/og-image.jpg",
-        secureUrl: "https://pheakdey-dinin.vercel.app/og-image.jpg",
+        url: "https://pheakdey-dinin.vercel.app/og-image.png",
+        secureUrl: "https://pheakdey-dinin.vercel.app/og-image.png",
         width: 1200,
         height: 630,
         alt: "Pheakdey & Dinin Wedding Invitation - February 27, 2026",
-        type: "image/jpeg",
+        type: "image/png",
       },
     ],
     locale: "en_US",
@@ -36,16 +36,14 @@ export const metadata: Metadata = {
       "Join us in celebrating the wedding of Lmut Pheakdey & Srorn Dinin on February 27, 2026 at Koh Dach Village, Phnom Penh",
     images: [
       {
-        url: "https://pheakdey-dinin.vercel.app/og-image.jpg",
+        url: "https://pheakdey-dinin.vercel.app/og-image.png",
         alt: "Pheakdey & Dinin Wedding Invitation",
       },
     ],
   },
-  facebook: {
-    appId: "1234567890", // Optional: Replace with your actual Facebook App ID if you have one
-  },
+
   other: {
-    "telegram:image": "https://pheakdey-dinin.vercel.app/og-image.jpg",
+    "telegram:image": "https://pheakdey-dinin.vercel.app/og-image.png",
     "telegram:title": "Pheakdey & Dinin Wedding Invitation",
     "telegram:description": "Join us in celebrating the wedding on February 27, 2026",
   },
