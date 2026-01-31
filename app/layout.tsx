@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/photos/meta-data-image.png",
+        url: "/meta-data-image.png",
         width: 1200,
         height: 630,
       },
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "Pheakdey & Dinin Wedding Invitation",
     description:
       "Join us in celebrating the wedding of Lmut Pheakdey & Srorn Dinin on February 27, 2026 at Koh Dach Village, Phnom Penh",
-    images: ["/photos/meta-data-image.png"],
+    images: ["/meta-data-image.png"],
   },
 };
 
