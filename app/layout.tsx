@@ -13,12 +13,17 @@ export const metadata: Metadata = {
     title: "Pheakdey & Dinin Wedding Invitation",
     description:
       "Join us in celebrating the wedding of Lmut Pheakdey & Srorn Dinin on February 27, 2026 at Koh Dach Village, Phnom Penh",
+    url: "https://wedding-pheakdey-dinin.vercel.app",
+    siteName: "Pheakdey & Dinin Wedding",
     type: "website",
     images: [
       {
-        url: "/meta-data-image.png",
+        url: "https://wedding-pheakdey-dinin.vercel.app/meta-data-image.png",
+        secureUrl: "https://wedding-pheakdey-dinin.vercel.app/meta-data-image.png",
         width: 1200,
         height: 630,
+        alt: "Pheakdey & Dinin Wedding Invitation - February 27, 2026",
+        type: "image/png",
       },
     ],
     locale: "en_US",
@@ -29,7 +34,17 @@ export const metadata: Metadata = {
     title: "Pheakdey & Dinin Wedding Invitation",
     description:
       "Join us in celebrating the wedding of Lmut Pheakdey & Srorn Dinin on February 27, 2026 at Koh Dach Village, Phnom Penh",
-    images: ["/meta-data-image.png"],
+    images: [
+      {
+        url: "https://wedding-pheakdey-dinin.vercel.app/meta-data-image.png",
+        alt: "Pheakdey & Dinin Wedding Invitation",
+      },
+    ],
+  },
+  other: {
+    "telegram:image": "https://wedding-pheakdey-dinin.vercel.app/meta-data-image.png",
+    "telegram:title": "Pheakdey & Dinin Wedding Invitation",
+    "telegram:description": "Join us in celebrating the wedding on February 27, 2026",
   },
 };
 
