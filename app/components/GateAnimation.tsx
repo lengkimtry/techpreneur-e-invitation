@@ -68,7 +68,7 @@ export default function GateAnimation({ onGateOpened }: GateAnimationProps) {
         duration: 1,
         ease: "power2.out",
       },
-      "+=0.3"
+      "+=0.3",
     );
 
     // Animate title
@@ -81,7 +81,7 @@ export default function GateAnimation({ onGateOpened }: GateAnimationProps) {
         duration: 1,
         ease: "back.out(1.7)",
       },
-      "-=0.5"
+      "-=0.5",
     );
 
     // Animate names
@@ -94,7 +94,7 @@ export default function GateAnimation({ onGateOpened }: GateAnimationProps) {
         duration: 1,
         ease: "back.out(1.7)",
       },
-      "-=0.7"
+      "-=0.7",
     );
 
     // Animate monogram with rotation
@@ -108,7 +108,7 @@ export default function GateAnimation({ onGateOpened }: GateAnimationProps) {
         duration: 1.5,
         ease: "back.out(1.7)",
       },
-      "-=0.8"
+      "-=0.8",
     );
 
     // Animate button
@@ -121,7 +121,7 @@ export default function GateAnimation({ onGateOpened }: GateAnimationProps) {
         duration: 1,
         ease: "back.out(1.7)",
       },
-      "-=0.5"
+      "-=0.5",
     );
 
     // Animate event info
@@ -134,7 +134,7 @@ export default function GateAnimation({ onGateOpened }: GateAnimationProps) {
         duration: 1,
         ease: "power2.out",
       },
-      "-=0.7"
+      "-=0.7",
     );
   }, []);
 
@@ -177,7 +177,7 @@ export default function GateAnimation({ onGateOpened }: GateAnimationProps) {
         duration: 1.2,
         ease: "power2.inOut",
       },
-      "-=0.5"
+      "-=0.5",
     );
   };
 
@@ -200,9 +200,7 @@ export default function GateAnimation({ onGateOpened }: GateAnimationProps) {
           priority
           sizes="100vw"
           quality={85}
-          onLoad={() =>
-            console.log("Gate background loaded successfully")
-          }
+          onLoad={() => console.log("Gate background loaded successfully")}
         />
       </div>
 

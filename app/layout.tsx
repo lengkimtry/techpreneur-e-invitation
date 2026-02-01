@@ -42,9 +42,11 @@ export const metadata: Metadata = {
     ],
   },
   other: {
-    "telegram:image": "https://pheakdey-dinin.vercel.app/preview_link_image.jpg",
+    "telegram:image":
+      "https://pheakdey-dinin.vercel.app/preview_link_image.jpg",
     "telegram:title": "Pheakdey & Dinin Wedding Invitation",
-    "telegram:description": "Join us in celebrating the wedding on February 27, 2026",
+    "telegram:description":
+      "Join us in celebrating the wedding on February 27, 2026",
   },
 };
 
