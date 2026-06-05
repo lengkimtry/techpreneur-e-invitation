@@ -1,0 +1,10 @@
+name = "techpreneur-e-invitation"
+compatibility_date = "2024-12-30"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxWIiFCMjvkNXFHfvaPsfUf_DXsMQjrAF78DTt5y0ZK2ZKdDmSXgsdfoDYSN7xNys2bcQ/exec"
+
+# SHEETS_SECRET and ADMIN_KEY must be set as encrypted secrets in the
+# Cloudflare Workers dashboard (Variables and Secrets → type: Secret).
+# Secrets survive redeployments and are never exposed in logs or code.
