@@ -19,6 +19,7 @@ interface Props {
 export default function AdminClient({ adminKey }: Props) {
   const [guestName, setGuestName] = useState("");
   const [companyName, setCompanyName] = useState("");
+  const [logoUrl, setLogoUrl] = useState("");
   const [generatedUrl, setGeneratedUrl] = useState("");
   const [copied, setCopied] = useState(false);
   const [responses, setResponses] = useState<RSVPRow[]>([]);
@@ -30,6 +31,7 @@ export default function AdminClient({ adminKey }: Props) {
     const params = new URLSearchParams();
     if (guestName.trim()) params.set("name", guestName.trim());
     if (companyName.trim()) params.set("company", companyName.trim());
+    if (logoUrl.trim()) params.set("logo", logoUrl.trim());
     setGeneratedUrl(`${base}/?${params.toString()}`);
     setCopied(false);
   };
@@ -45,11 +47,15 @@ export default function AdminClient({ adminKey }: Props) {
     setResponseError("");
     try {
       const res = await fetch(`/api/rsvp?key=${encodeURIComponent(adminKey)}`);
-      if (!res.ok) throw new Error("Failed");
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(`HTTP ${res.status}: ${err.error || "unknown error"}`);
+      }
       const data = await res.json();
       setResponses(data.rows || []);
-    } catch {
-      setResponseError("Could not load responses. Check SHEETS_WEBHOOK_URL configuration.");
+    } catch (e: unknown) {
+      const msg = e instanceof Error ? e.message : String(e);
+      setResponseError(`Could not load responses: ${msg}`);
     }
     setLoadingResponses(false);
   }, [adminKey]);
@@ -111,6 +117,25 @@ export default function AdminClient({ adminKey }: Props) {
                 className="w-full border border-[#e8e0f0] rounded-xl px-4 py-2.5 text-sm text-[#250c58] focus:outline-none focus:border-[#4c139e]"
               />
             </div>
+          </div>
+          <div className="mb-4">
+            <label className="block text-[#340f80] text-xs font-semibold uppercase tracking-wide mb-1.5">Company Logo URL <span className="text-[#4c139e]/40 normal-case font-normal">(optional)</span></label>
+            <input
+              type="url"
+              value={logoUrl}
+              onChange={(e) => setLogoUrl(e.target.value)}
+              placeholder="https://example.com/logo.png"
+              className="w-full border border-[#e8e0f0] rounded-xl px-4 py-2.5 text-sm text-[#250c58] focus:outline-none focus:border-[#4c139e] font-mono"
+            />
+            {logoUrl.trim() && (
+              <div className="mt-2 flex items-center gap-3">
+                <div className="bg-[#f4f1f8] border border-[#e8e0f0] rounded-lg px-3 py-1.5 flex items-center justify-center" style={{ minWidth: "60px", minHeight: "40px" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={logoUrl} alt="Logo preview" className="max-h-8 max-w-[100px] object-contain" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                </div>
+                <p className="text-[#4c139e]/50 text-xs">Logo preview</p>
+              </div>
+            )}
           </div>
           <button
             onClick={generateUrl}

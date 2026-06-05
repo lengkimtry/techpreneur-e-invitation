@@ -8,9 +8,10 @@ interface GateAnimationProps {
   onGateOpened: () => void;
   guestName?: string;
   companyName?: string;
+  logoUrl?: string;
 }
 
-export default function GateAnimation({ onGateOpened, guestName, companyName }: GateAnimationProps) {
+export default function GateAnimation({ onGateOpened, guestName, companyName, logoUrl }: GateAnimationProps) {
   const leftRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -454,10 +455,18 @@ export default function GateAnimation({ onGateOpened, guestName, companyName }: 
 
         {/* Personalized guest name */}
         {guestName && (
-          <div className="mb-6 text-center px-4 py-3 rounded-xl border border-[#ffd85b]/20 bg-white/5 max-w-sm w-full">
-            <p className="text-[#c8a0ff]/60 text-[10px] font-eng uppercase tracking-[0.3em] mb-1">Cordially Invited</p>
-            <p className="text-[#ffd85b] font-semibold text-base font-eng">{guestName}</p>
-            {companyName && <p className="text-white/60 text-xs font-eng mt-0.5">{companyName}</p>}
+          <div className="mb-6 text-center px-5 py-4 rounded-2xl border border-[#ffd85b]/20 bg-white/5 max-w-sm w-full">
+            {logoUrl && (
+              <div className="flex justify-center mb-3">
+                <div className="bg-white rounded-xl px-4 py-2 flex items-center justify-center" style={{ maxWidth: "130px", maxHeight: "60px" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={logoUrl} alt="Company Logo" className="max-h-10 w-auto object-contain" />
+                </div>
+              </div>
+            )}
+            <p className="text-[#c8a0ff]/60 text-[10px] font-eng uppercase tracking-[0.3em] mb-1.5">Cordially Invited</p>
+            <p className="text-[#ffd85b] font-bold text-xl md:text-2xl font-eng">{guestName}</p>
+            {companyName && <p className="text-white/60 text-xs font-eng mt-1">{companyName}</p>}
           </div>
         )}
 

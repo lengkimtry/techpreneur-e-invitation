@@ -16,9 +16,10 @@ import BackToTopButton from "./BackToTopButton";
 interface Props {
   guestName?: string;
   companyName?: string;
+  logoUrl?: string;
 }
 
-export default function ClientHome({ guestName, companyName }: Props) {
+export default function ClientHome({ guestName, companyName, logoUrl }: Props) {
   const [gateOpen, setGateOpen] = useState(false);
   const [showGate, setShowGate] = useState(true);
 
@@ -52,6 +53,7 @@ export default function ClientHome({ guestName, companyName }: Props) {
         <GateAnimation
           guestName={guestName}
           companyName={companyName}
+          logoUrl={logoUrl}
           onGateOpened={() => {
             setGateOpen(true);
             setTimeout(() => setShowGate(false), 1300);
@@ -60,7 +62,7 @@ export default function ClientHome({ guestName, companyName }: Props) {
       )}
       <main id="main-content" className="opacity-0">
         <ProgramHeader />
-        <EventHero guestName={guestName} companyName={companyName} />
+        <EventHero guestName={guestName} companyName={companyName} logoUrl={logoUrl} />
         <ProgramAbout />
         <EventAgenda />
         <RSVPForm guestName={guestName} companyName={companyName} />

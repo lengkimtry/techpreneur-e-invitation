@@ -22,9 +22,10 @@ const BuildingIcon = () => (
 interface EventHeroProps {
   guestName?: string;
   companyName?: string;
+  logoUrl?: string;
 }
 
-export default function EventHero({ guestName, companyName }: EventHeroProps) {
+export default function EventHero({ guestName, companyName, logoUrl }: EventHeroProps) {
   return (
     <section
       id="hero"
@@ -60,10 +61,18 @@ export default function EventHero({ guestName, companyName }: EventHeroProps) {
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen py-20 px-4 text-center">
         {/* Personalized guest block */}
         {guestName && (
-          <div className="mb-5 text-center">
+          <div className="mb-6 text-center">
+            {logoUrl && (
+              <div className="flex justify-center mb-3">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl px-5 py-3 border border-white/15 inline-flex items-center justify-center" style={{ minHeight: "60px", maxWidth: "160px" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={logoUrl} alt="Company Logo" className="max-h-12 w-auto object-contain" />
+                </div>
+              </div>
+            )}
             <p className="text-[#c8a0ff]/50 text-[10px] font-eng uppercase tracking-[0.3em] mb-1">Cordially Invited</p>
-            <p className="text-white font-bold text-lg md:text-xl font-eng">{guestName}</p>
-            {companyName && <p className="text-[#ffd85b] text-sm font-eng mt-0.5">{companyName}</p>}
+            <p className="text-white font-bold text-2xl md:text-3xl font-eng">{guestName}</p>
+            {companyName && <p className="text-[#ffd85b] text-sm font-eng mt-1">{companyName}</p>}
           </div>
         )}
 
