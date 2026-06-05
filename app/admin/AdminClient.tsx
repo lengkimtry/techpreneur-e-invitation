@@ -20,11 +20,32 @@ export default function AdminClient({ adminKey }: Props) {
   const [guestName, setGuestName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [logoUrl, setLogoUrl] = useState("");
+  const [logoUploading, setLogoUploading] = useState(false);
+  const [logoUploadError, setLogoUploadError] = useState("");
   const [generatedUrl, setGeneratedUrl] = useState("");
   const [copied, setCopied] = useState(false);
   const [responses, setResponses] = useState<RSVPRow[]>([]);
   const [loadingResponses, setLoadingResponses] = useState(false);
   const [responseError, setResponseError] = useState("");
+
+  const handleLogoUpload = async (file: File) => {
+    setLogoUploading(true);
+    setLogoUploadError("");
+    const form = new FormData();
+    form.append("file", file);
+    try {
+      const res = await fetch("/api/upload", { method: "POST", body: form });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error((err as { error?: string }).error ?? "Upload failed");
+      }
+      const data = (await res.json()) as { url: string };
+      setLogoUrl(data.url);
+    } catch (e: unknown) {
+      setLogoUploadError(e instanceof Error ? e.message : "Upload failed");
+    }
+    setLogoUploading(false);
+  };
 
   const generateUrl = () => {
     const base = typeof window !== "undefined" ? window.location.origin : "";
@@ -119,21 +140,60 @@ export default function AdminClient({ adminKey }: Props) {
             </div>
           </div>
           <div className="mb-4">
-            <label className="block text-[#340f80] text-xs font-semibold uppercase tracking-wide mb-1.5">Company Logo URL <span className="text-[#4c139e]/40 normal-case font-normal">(optional)</span></label>
-            <input
-              type="url"
-              value={logoUrl}
-              onChange={(e) => setLogoUrl(e.target.value)}
-              placeholder="https://example.com/logo.png"
-              className="w-full border border-[#e8e0f0] rounded-xl px-4 py-2.5 text-sm text-[#250c58] focus:outline-none focus:border-[#4c139e] font-mono"
-            />
+            <label className="block text-[#340f80] text-xs font-semibold uppercase tracking-wide mb-1.5">
+              Company Logo <span className="text-[#4c139e]/40 normal-case font-normal">(optional)</span>
+            </label>
+            <div className="flex items-center gap-3">
+              {/* Upload button */}
+              <label className={`flex-shrink-0 flex items-center gap-2 px-4 py-2.5 rounded-xl border-2 border-dashed cursor-pointer transition-colors ${logoUploading ? "opacity-50 cursor-not-allowed border-[#e8e0f0] bg-[#f4f1f8]" : "border-[#4c139e]/30 bg-[#f4f1f8] hover:border-[#4c139e] hover:bg-[#ede8f5]"}`}>
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  disabled={logoUploading}
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) handleLogoUpload(file);
+                    e.target.value = "";
+                  }}
+                />
+                {logoUploading ? (
+                  <svg className="w-4 h-4 text-[#4c139e] animate-spin" viewBox="0 0 24 24" fill="none">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                  </svg>
+                ) : (
+                  <svg className="w-4 h-4 text-[#4c139e]" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+                  </svg>
+                )}
+                <span className="text-[#4c139e] text-xs font-semibold">{logoUploading ? "Uploading…" : "Upload Image"}</span>
+              </label>
+
+              {/* URL input fallback */}
+              <input
+                type="url"
+                value={logoUrl}
+                onChange={(e) => setLogoUrl(e.target.value)}
+                placeholder="or paste image URL…"
+                className="flex-1 border border-[#e8e0f0] rounded-xl px-4 py-2.5 text-sm text-[#250c58] focus:outline-none focus:border-[#4c139e] font-mono min-w-0"
+              />
+            </div>
+
+            {logoUploadError && (
+              <p className="text-red-500 text-xs mt-1.5">{logoUploadError}</p>
+            )}
+
             {logoUrl.trim() && (
-              <div className="mt-2 flex items-center gap-3">
-                <div className="bg-[#f4f1f8] border border-[#e8e0f0] rounded-lg px-3 py-1.5 flex items-center justify-center" style={{ minWidth: "60px", minHeight: "40px" }}>
+              <div className="mt-2.5 flex items-center gap-3">
+                <div className="bg-white border border-[#e8e0f0] rounded-xl px-4 py-2 flex items-center justify-center shadow-sm" style={{ minWidth: "80px", minHeight: "48px" }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={logoUrl} alt="Logo preview" className="max-h-8 max-w-[100px] object-contain" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                  <img src={logoUrl} alt="Logo preview" className="max-h-9 max-w-[120px] object-contain" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
                 </div>
-                <p className="text-[#4c139e]/50 text-xs">Logo preview</p>
+                <div>
+                  <p className="text-[#4c139e] text-xs font-semibold">Logo uploaded</p>
+                  <button onClick={() => setLogoUrl("")} className="text-red-400 text-xs hover:text-red-600">Remove</button>
+                </div>
               </div>
             )}
           </div>
