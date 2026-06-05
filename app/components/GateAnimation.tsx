@@ -455,7 +455,7 @@ export default function GateAnimation({ onGateOpened }: GateAnimationProps) {
           className="group relative overflow-hidden bg-gradient-to-r from-[#ffd85b] to-[#d4a020] text-[#250c58] font-bold text-sm md:text-base px-9 py-3 rounded-full shadow-xl transition-all duration-300 hover:scale-105 active:scale-95"
           style={{ boxShadow: "0 4px 20px rgba(255,216,91,0.35)" }}
         >
-          <span className="relative z-10 font-eng">Open Invitation ✦</span>
+          <span className="relative z-10 font-eng">Open Invitation</span>
           <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </button>
       </div>

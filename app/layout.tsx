@@ -1,5 +1,20 @@
 import type { Metadata } from "next";
+import { Roboto, Kantumruy_Pro } from "next/font/google";
 import "./globals.css";
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-roboto",
+  display: "swap",
+});
+
+const kantumruyPro = Kantumruy_Pro({
+  subsets: ["khmer"],
+  weight: ["300", "400", "700"],
+  variable: "--font-kantumruy-pro",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Techpreneur Bootcamp 2026 - Launching Ceremony",
@@ -24,30 +39,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${roboto.variable} ${kantumruyPro.variable}`}
+    >
       <head>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link
-          rel="preload"
-          href="/fonts/KhKantumruy-Regular.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/GoogleSans-Regular.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/Moul.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin="anonymous"
-        />
       </head>
       <body className="antialiased">{children}</body>
     </html>

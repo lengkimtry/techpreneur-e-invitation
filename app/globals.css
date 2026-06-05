@@ -16,53 +16,6 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: "KhKantumruy";
-  src: url("/fonts/KhKantumruy-Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "KhKantumruy";
-  src: url("/fonts/KhKantumruy-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "KhKantumruy";
-  src: url("/fonts/KhKantumruy-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Google Sans";
-  src: url("/fonts/GoogleSans-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Google Sans";
-  src: url("/fonts/GoogleSans-Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Google Sans";
-  src: url("/fonts/GoogleSans-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
 
 @font-face {
   font-family: "Niradei";
@@ -82,7 +35,7 @@
 
 @layer utilities {
   .font-khmer {
-    font-family: "KhKantumruy", sans-serif;
+    font-family: var(--font-kantumruy-pro), sans-serif;
   }
 
   .font-khmer-display {
@@ -90,7 +43,7 @@
   }
 
   .font-eng {
-    font-family: "Google Sans", system-ui, sans-serif;
+    font-family: var(--font-roboto), system-ui, sans-serif;
   }
 
   .font-koulen {
@@ -120,7 +73,7 @@ body {
   overflow-x: hidden;
   width: 100%;
   position: relative;
-  font-family: "Google Sans", "KhKantumruy", system-ui, sans-serif;
+  font-family: var(--font-roboto), var(--font-kantumruy-pro), system-ui, sans-serif;
 }
 
 section {
