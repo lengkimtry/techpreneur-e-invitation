@@ -105,11 +105,11 @@ export default function EventHero({ guestName, companyName, logoUrl }: EventHero
               <div className="flex-1 h-px bg-gradient-to-l from-transparent to-[#ffd85b]/60" />
             </div>
 
-            <p className="text-[#c8a0ff]/60 text-[10px] font-eng uppercase tracking-[0.4em] mb-2">Cordially Invited</p>
+            <p className="text-[#c8a0ff]/60 text-xs font-eng uppercase tracking-[0.4em] mb-2">Cordially Invited</p>
             <p className="text-white font-bold text-3xl md:text-4xl font-eng leading-tight">{guestName}</p>
             {companyName && (
-              <div className="mt-3 inline-flex items-center gap-2 bg-white/10 rounded-full px-5 py-1.5 border border-[#ffd85b]/25">
-                <p className="text-[#ffd85b] text-sm font-eng font-semibold">{companyName}</p>
+              <div className="mt-3 inline-flex items-center gap-2 bg-white/10 rounded-full px-5 py-2 border border-[#ffd85b]/25">
+                <p className="text-[#ffd85b] text-base font-eng font-semibold">{companyName}</p>
               </div>
             )}
           </div>
@@ -117,12 +117,12 @@ export default function EventHero({ guestName, companyName, logoUrl }: EventHero
 
         {/* Invitation badge */}
         <div className="mb-6">
-          <div className="inline-flex items-center gap-2.5 border border-[#ffd85b]/40 px-4 py-1.5 rounded-full">
-            <span className="text-[#ffd85b] text-[11px] uppercase tracking-[0.42em] font-eng font-semibold">
+          <div className="inline-flex items-center gap-2.5 border border-[#ffd85b]/40 px-5 py-2 rounded-full">
+            <span className="text-[#ffd85b] text-sm uppercase tracking-[0.38em] font-eng font-semibold">
               Invitation
             </span>
-            <span className="text-[#ffd85b]/50 text-xs">·</span>
-            <span className="text-[#ffd85b] font-khmer" style={{ fontSize: "14px", lineHeight: "1" }}>
+            <span className="text-[#ffd85b]/50 text-sm">·</span>
+            <span className="text-[#ffd85b] font-khmer" style={{ fontSize: "16px", lineHeight: "1" }}>
               សូមគោរពអញ្ជើញ
             </span>
           </div>
@@ -140,10 +140,10 @@ export default function EventHero({ guestName, companyName, logoUrl }: EventHero
 
         {/* Khmer + English subtitle */}
         <div className="flex flex-col items-center gap-0.5 mb-8">
-          <p className="text-[#c8a0ff] font-khmer" style={{ fontSize: "15px", lineHeight: "1.5", fontWeight: 300 }}>
+          <p className="text-[#c8a0ff] font-khmer" style={{ fontSize: "17px", lineHeight: "1.5", fontWeight: 300 }}>
             ពិធីបើកដំណើរការ
           </p>
-          <p className="text-[#f4f1f8]/60 text-xs md:text-sm font-eng tracking-[0.22em] uppercase">
+          <p className="text-[#f4f1f8]/60 text-sm font-eng tracking-[0.22em] uppercase">
             Launching Ceremony
           </p>
         </div>
@@ -163,24 +163,24 @@ export default function EventHero({ guestName, companyName, logoUrl }: EventHero
           <div className="flex items-start gap-4">
             <span className="text-[#ffd85b]"><CalendarIcon /></span>
             <div>
-              <p className="text-white font-semibold text-sm md:text-base font-eng">June 25th, 2026</p>
-              <p className="text-[#c8a0ff] text-xs md:text-sm mt-0.5">09:00 AM — 12:00 PM</p>
+              <p className="text-white font-semibold text-base font-eng">June 25th, 2026</p>
+              <p className="text-[#c8a0ff] text-sm mt-0.5">09:00 AM — 12:00 PM</p>
             </div>
           </div>
           <div className="h-px bg-white/10" />
           <div className="flex items-start gap-4">
             <span className="text-[#ffd85b]"><MapPinIcon /></span>
             <div>
-              <p className="text-white font-semibold text-sm md:text-base font-eng">Ministry of Posts and Telecommunications</p>
-              <p className="text-[#c8a0ff] text-xs md:text-sm mt-0.5">Hall on the 3rd Floor · Phnom Penh, Cambodia</p>
+              <p className="text-white font-semibold text-base font-eng">Ministry of Posts and Telecommunications</p>
+              <p className="text-[#c8a0ff] text-sm mt-0.5">Hall on the 3rd Floor · Phnom Penh, Cambodia</p>
             </div>
           </div>
           <div className="h-px bg-white/10" />
           <div className="flex items-start gap-4">
             <span className="text-[#ffd85b]"><BuildingIcon /></span>
             <div>
-              <p className="text-white font-semibold text-sm md:text-base font-eng">Organized by</p>
-              <p className="text-[#c8a0ff] text-xs md:text-sm mt-0.5">DICHI Academy &amp; ELIX Organization</p>
+              <p className="text-white font-semibold text-base font-eng">Organized by</p>
+              <p className="text-[#c8a0ff] text-sm mt-0.5">DICHI Academy &amp; ELIX Organization</p>
             </div>
           </div>
         </div>
@@ -190,8 +190,8 @@ export default function EventHero({ guestName, companyName, logoUrl }: EventHero
           onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
           className="flex flex-col items-center gap-2 text-[#f4f1f8]/50 hover:text-[#ffd85b] transition-colors duration-300"
         >
-          <span className="text-[11px] uppercase tracking-widest font-eng">View Program</span>
-          <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <span className="text-xs uppercase tracking-widest font-eng">View Program</span>
+          <svg className="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
           </svg>
         </button>
