@@ -82,7 +82,7 @@ export default function EventHero({ guestName, companyName, logoUrl }: EventHero
                   <img
                     src={logoUrl}
                     alt="Logo"
-                    className="w-full h-full object-contain p-4"
+                    className="w-full h-full object-cover object-top"
                   />
                   <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,216,91,0.05) 0%, transparent 60%)" }} />
                 </div>
