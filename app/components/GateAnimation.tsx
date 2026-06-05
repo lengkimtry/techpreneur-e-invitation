@@ -397,214 +397,87 @@ export default function GateAnimation({ onGateOpened, guestName, companyName, lo
       {/* ── Content overlay ── */}
       <div
         ref={contentRef}
-        className="absolute inset-0 z-40 flex items-center justify-center px-4 py-4 opacity-0"
+        className="absolute inset-0 z-40 flex flex-col items-center justify-center px-5 text-center opacity-0"
       >
-        {/* ── Invitation Card ── */}
-        <div
-          className="relative w-full max-w-sm overflow-y-auto"
-          style={{
-            maxHeight: "94vh",
-            background: "linear-gradient(160deg, #0c0420 0%, #1a0942 45%, #2d0e70 100%)",
-            border: "1.5px solid rgba(255,216,91,0.55)",
-            borderRadius: "20px",
-            boxShadow: "0 0 70px rgba(255,216,91,0.18), 0 0 140px rgba(76,19,158,0.45), inset 0 1px 0 rgba(255,216,91,0.12)",
-          }}
-        >
-          {/* Inner border */}
-          <div className="absolute inset-[7px] rounded-[14px] border border-[#ffd85b]/12 pointer-events-none z-10" />
-
-          {/* Circuit background pattern */}
-          <div className="absolute inset-0 rounded-[20px] overflow-hidden opacity-[0.05] pointer-events-none">
-            <svg className="w-full h-full" viewBox="0 0 380 700" preserveAspectRatio="xMidYMid slice">
-              <defs>
-                <pattern id="inv-circuit" x="0" y="0" width="95" height="95" patternUnits="userSpaceOnUse">
-                  <path d="M12 48 L36 48 M36 48 L36 24 M36 24 L66 24 M66 24 L66 48 M66 48 L84 48" stroke="#ffd85b" strokeWidth="0.9" fill="none"/>
-                  <circle cx="36" cy="48" r="3" fill="#ffd85b"/>
-                  <circle cx="66" cy="24" r="3" fill="#ffd85b"/>
-                  <path d="M18 78 L18 60 M18 60 L48 60 M48 60 L48 78" stroke="#c8a0ff" strokeWidth="0.6" fill="none"/>
-                  <rect x="8" y="8" width="10" height="10" rx="2" fill="none" stroke="#ffd85b" strokeWidth="0.5"/>
-                </pattern>
-              </defs>
-              <rect width="380" height="700" fill="url(#inv-circuit)"/>
-            </svg>
-          </div>
-
-          {/* ── Corner ornaments ── */}
-          {/* Top-left */}
-          <svg className="absolute top-0 left-0 w-20 h-20 pointer-events-none z-20" viewBox="0 0 80 80" fill="none">
-            <path d="M6 40 L6 10 Q6 6 10 6 L40 6" stroke="#ffd85b" strokeWidth="1.5" opacity="0.7"/>
-            <path d="M6 24 L18 24" stroke="#ffd85b" strokeWidth="1" opacity="0.5"/>
-            <circle cx="6" cy="24" r="2.5" fill="#ffd85b" opacity="0.7"/>
-            <circle cx="18" cy="24" r="2" fill="#ffd85b" opacity="0.45"/>
-            <path d="M24 6 L24 18" stroke="#ffd85b" strokeWidth="1" opacity="0.5"/>
-            <circle cx="24" cy="6" r="2.5" fill="#ffd85b" opacity="0.7"/>
-            <circle cx="24" cy="18" r="2" fill="#ffd85b" opacity="0.45"/>
-            <circle cx="6" cy="6" r="4" fill="none" stroke="#ffd85b" strokeWidth="1.5" opacity="0.6"/>
-            <circle cx="6" cy="6" r="1.5" fill="#ffd85b" opacity="0.8"/>
-          </svg>
-          {/* Top-right */}
-          <svg className="absolute top-0 right-0 w-20 h-20 pointer-events-none z-20" viewBox="0 0 80 80" fill="none">
-            <path d="M74 40 L74 10 Q74 6 70 6 L40 6" stroke="#ffd85b" strokeWidth="1.5" opacity="0.7"/>
-            <path d="M74 24 L62 24" stroke="#ffd85b" strokeWidth="1" opacity="0.5"/>
-            <circle cx="74" cy="24" r="2.5" fill="#ffd85b" opacity="0.7"/>
-            <circle cx="62" cy="24" r="2" fill="#ffd85b" opacity="0.45"/>
-            <path d="M56 6 L56 18" stroke="#ffd85b" strokeWidth="1" opacity="0.5"/>
-            <circle cx="56" cy="6" r="2.5" fill="#ffd85b" opacity="0.7"/>
-            <circle cx="56" cy="18" r="2" fill="#ffd85b" opacity="0.45"/>
-            <circle cx="74" cy="6" r="4" fill="none" stroke="#ffd85b" strokeWidth="1.5" opacity="0.6"/>
-            <circle cx="74" cy="6" r="1.5" fill="#ffd85b" opacity="0.8"/>
-          </svg>
-          {/* Bottom-left */}
-          <svg className="absolute bottom-0 left-0 w-20 h-20 pointer-events-none z-20" viewBox="0 0 80 80" fill="none">
-            <path d="M6 40 L6 70 Q6 74 10 74 L40 74" stroke="#ffd85b" strokeWidth="1.5" opacity="0.7"/>
-            <path d="M6 56 L18 56" stroke="#ffd85b" strokeWidth="1" opacity="0.5"/>
-            <circle cx="6" cy="56" r="2.5" fill="#ffd85b" opacity="0.7"/>
-            <circle cx="18" cy="56" r="2" fill="#ffd85b" opacity="0.45"/>
-            <path d="M24 74 L24 62" stroke="#ffd85b" strokeWidth="1" opacity="0.5"/>
-            <circle cx="24" cy="74" r="2.5" fill="#ffd85b" opacity="0.7"/>
-            <circle cx="24" cy="62" r="2" fill="#ffd85b" opacity="0.45"/>
-            <circle cx="6" cy="74" r="4" fill="none" stroke="#ffd85b" strokeWidth="1.5" opacity="0.6"/>
-            <circle cx="6" cy="74" r="1.5" fill="#ffd85b" opacity="0.8"/>
-          </svg>
-          {/* Bottom-right */}
-          <svg className="absolute bottom-0 right-0 w-20 h-20 pointer-events-none z-20" viewBox="0 0 80 80" fill="none">
-            <path d="M74 40 L74 70 Q74 74 70 74 L40 74" stroke="#ffd85b" strokeWidth="1.5" opacity="0.7"/>
-            <path d="M74 56 L62 56" stroke="#ffd85b" strokeWidth="1" opacity="0.5"/>
-            <circle cx="74" cy="56" r="2.5" fill="#ffd85b" opacity="0.7"/>
-            <circle cx="62" cy="56" r="2" fill="#ffd85b" opacity="0.45"/>
-            <path d="M56 74 L56 62" stroke="#ffd85b" strokeWidth="1" opacity="0.5"/>
-            <circle cx="56" cy="74" r="2.5" fill="#ffd85b" opacity="0.7"/>
-            <circle cx="56" cy="62" r="2" fill="#ffd85b" opacity="0.45"/>
-            <circle cx="74" cy="74" r="4" fill="none" stroke="#ffd85b" strokeWidth="1.5" opacity="0.6"/>
-            <circle cx="74" cy="74" r="1.5" fill="#ffd85b" opacity="0.8"/>
-          </svg>
-
-          {/* ── Card content ── */}
-          <div className="relative z-10 px-8 py-10 text-center">
-
-            {/* Logo */}
-            <div className="flex justify-center mb-5">
-              <div
-                className="bg-white rounded-2xl px-5 py-2.5"
-                style={{ boxShadow: "0 0 28px rgba(255,216,91,0.22), 0 6px 20px rgba(0,0,0,0.5)" }}
-              >
-                <Image
-                  src="/images/logo.png"
-                  alt="TechPreneur"
-                  width={200}
-                  height={72}
-                  className="h-10 md:h-12 w-auto object-contain"
-                  priority
-                />
-              </div>
-            </div>
-
-            {/* Gold ornament divider */}
-            <div className="flex items-center gap-2 mb-5 mx-auto max-w-[220px]">
-              <div className="flex-1 h-px bg-gradient-to-r from-transparent to-[#ffd85b]/80" />
-              <svg viewBox="0 0 24 24" className="w-4 h-4 flex-shrink-0" fill="#ffd85b">
-                <path d="M12 2 L13.5 8.5 L20 10 L13.5 11.5 L12 18 L10.5 11.5 L4 10 L10.5 8.5 Z"/>
-              </svg>
-              <div className="flex-1 h-px bg-gradient-to-l from-transparent to-[#ffd85b]/80" />
-            </div>
-
-            {/* Invitation badge */}
-            <div className="inline-flex items-center gap-2.5 border border-[#ffd85b]/40 px-4 py-1.5 rounded-full mb-4">
-              <span className="text-[#ffd85b] text-[10px] uppercase tracking-[0.38em] font-eng font-semibold">Invitation</span>
-              <span className="text-[#ffd85b]/40">·</span>
-              <span className="text-[#c8a0ff] font-khmer" style={{ fontSize: "13px", lineHeight: "1" }}>សូមគោរពអញ្ជើញ</span>
-            </div>
-
-            {/* Event title */}
-            <h1 className="text-white font-bold text-2xl md:text-3xl leading-tight mb-1 font-eng">
-              Techpreneur<br />Bootcamp 2026
-            </h1>
-            <p className="text-[#c8a0ff] text-xs tracking-widest uppercase font-eng mb-1">Launching Ceremony</p>
-            <p className="text-[#c8a0ff]/60 font-khmer mb-5" style={{ fontSize: "13px" }}>ពិធីបើកដំណើរការ</p>
-
-            {/* Section divider */}
-            <div className="flex items-center gap-2 mb-5 mx-auto max-w-[200px]">
-              <div className="flex-1 h-px bg-[#ffd85b]/30" />
-              <span className="text-[#ffd85b]/50 text-[9px] tracking-widest">✦ ✦ ✦</span>
-              <div className="flex-1 h-px bg-[#ffd85b]/30" />
-            </div>
-
-            {/* Event details */}
-            <div className="space-y-3 mb-5 text-left">
-              <div className="flex items-center gap-3 bg-white/8 rounded-xl px-4 py-3 border border-[#ffd85b]/15">
-                <div className="w-8 h-8 rounded-lg bg-[#ffd85b]/15 flex items-center justify-center flex-shrink-0">
-                  <svg className="w-4 h-4 text-[#ffd85b]" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 9v7.5" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-[#ffd85b] font-bold text-sm font-eng leading-none">June 25th, 2026</p>
-                  <p className="text-[#c8a0ff] text-xs mt-0.5 font-eng">09:00 — 12:00 AM</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 bg-white/8 rounded-xl px-4 py-3 border border-[#ffd85b]/15">
-                <div className="w-8 h-8 rounded-lg bg-[#ffd85b]/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg className="w-4 h-4 text-[#ffd85b]" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-white font-semibold text-sm font-eng leading-snug">Ministry of Posts &amp; Telecom</p>
-                  <p className="text-[#c8a0ff] text-xs mt-0.5 font-eng">Hall on the 3rd Floor · Phnom Penh</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Guest section */}
-            {guestName ? (
-              <>
-                {/* Section divider */}
-                <div className="flex items-center gap-2 mb-5 mx-auto max-w-[200px]">
-                  <div className="flex-1 h-px bg-[#ffd85b]/30" />
-                  <span className="text-[#ffd85b]/50 text-[9px] tracking-widest">✦ ✦ ✦</span>
-                  <div className="flex-1 h-px bg-[#ffd85b]/30" />
-                </div>
-
-                {/* Guest card */}
-                <div
-                  className="rounded-2xl px-5 py-5 mb-6 text-center"
-                  style={{
-                    background: "linear-gradient(135deg, rgba(255,216,91,0.08) 0%, rgba(76,19,158,0.3) 100%)",
-                    border: "1px solid rgba(255,216,91,0.3)",
-                  }}
-                >
-                  {logoUrl && (
-                    <div className="flex justify-center mb-4">
-                      <div className="bg-white rounded-xl px-5 py-2.5 flex items-center justify-center shadow-lg" style={{ maxWidth: "150px", minHeight: "56px" }}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={logoUrl} alt="Company Logo" className="max-h-10 w-auto object-contain" />
-                      </div>
-                    </div>
-                  )}
-                  <p className="text-[#ffd85b]/70 text-[10px] font-eng uppercase tracking-[0.4em] mb-2">Cordially Invited</p>
-                  <p className="text-white font-bold text-2xl md:text-3xl font-eng leading-tight mb-1">{guestName}</p>
-                  {companyName && (
-                    <p className="text-[#c8a0ff] text-sm font-eng mt-1.5 font-semibold">{companyName}</p>
-                  )}
-                </div>
-              </>
-            ) : (
-              <div className="mb-6" />
-            )}
-
-            {/* CTA button */}
-            <button
-              onClick={handleOpen}
-              className="group relative overflow-hidden w-full bg-gradient-to-r from-[#ffd85b] to-[#d4a020] text-[#250c58] font-bold text-sm md:text-base py-3.5 rounded-2xl shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-95"
-              style={{ boxShadow: "0 4px 24px rgba(255,216,91,0.4)" }}
-            >
-              <span className="relative z-10 font-eng tracking-wide">Open Invitation</span>
-              <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </button>
-
+        {/* TechPreneur logo */}
+        <div className="mb-5">
+          <div
+            className="bg-white rounded-2xl px-5 py-3"
+            style={{ boxShadow: "0 0 32px rgba(255,216,91,0.2), 0 8px 24px rgba(0,0,0,0.4)" }}
+          >
+            <Image
+              src="/images/logo.png"
+              alt="TechPreneur"
+              width={220}
+              height={80}
+              className="h-12 md:h-14 w-auto object-contain"
+              priority
+            />
           </div>
         </div>
+
+        {/* Divider */}
+        <div className="flex items-center gap-3 mb-5 w-full max-w-[260px]">
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent to-[#ffd85b]" />
+          <span className="text-[#ffd85b]">✦</span>
+          <div className="flex-1 h-px bg-gradient-to-l from-transparent to-[#ffd85b]" />
+        </div>
+
+        <div className="flex items-center gap-2.5 mb-4 border border-[#ffd85b]/35 px-4 py-1.5 rounded-full">
+          <span className="text-[#c8a0ff] text-[11px] uppercase tracking-[0.32em] font-eng">Invitation</span>
+          <span className="text-[#ffd85b]/50 text-xs">·</span>
+          <span className="text-[#c8a0ff] font-khmer" style={{ fontSize: "14px", lineHeight: "1" }}>សូមគោរពអញ្ជើញ</span>
+        </div>
+
+        <h1 className="text-white font-bold text-xl md:text-2xl lg:text-3xl leading-snug mb-1 max-w-xs md:max-w-sm">
+          Techpreneur Bootcamp 2026
+        </h1>
+        <p className="text-[#c8a0ff] text-sm md:text-base mb-6">Launching Ceremony</p>
+
+        <div className="bg-white/10 backdrop-blur-sm rounded-xl px-5 py-3.5 mb-7 border border-[#ffd85b]/30 max-w-sm w-full space-y-2.5">
+          <div className="flex items-center gap-2.5">
+            <svg className="w-4 h-4 text-[#ffd85b] flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 9v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+            </svg>
+            <span className="text-[#ffd85b] font-semibold text-xs md:text-sm font-eng">June 25th, 2026 &nbsp;·&nbsp; 09:00 — 12:00</span>
+          </div>
+          <div className="flex items-start gap-2.5">
+            <svg className="w-4 h-4 text-[#f4f1f8] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+            </svg>
+            <div>
+              <p className="text-[#f4f1f8] text-xs md:text-sm font-eng">Ministry of Posts and Telecommunications</p>
+              <p className="text-[#c8a0ff] text-[11px] mt-0.5 font-eng">Hall on the 3rd Floor · Phnom Penh, Cambodia</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Personalized guest name */}
+        {guestName && (
+          <div className="mb-6 text-center px-5 py-4 rounded-2xl border border-[#ffd85b]/20 bg-white/5 max-w-sm w-full">
+            {logoUrl && (
+              <div className="flex justify-center mb-3">
+                <div className="bg-white rounded-xl px-4 py-2 flex items-center justify-center" style={{ maxWidth: "130px", maxHeight: "60px" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={logoUrl} alt="Company Logo" className="max-h-10 w-auto object-contain" />
+                </div>
+              </div>
+            )}
+            <p className="text-[#c8a0ff]/60 text-[10px] font-eng uppercase tracking-[0.3em] mb-1.5">Cordially Invited</p>
+            <p className="text-[#ffd85b] font-bold text-xl md:text-2xl font-eng">{guestName}</p>
+            {companyName && <p className="text-white/60 text-xs font-eng mt-1">{companyName}</p>}
+          </div>
+        )}
+
+        <button
+          onClick={handleOpen}
+          className="group relative overflow-hidden bg-gradient-to-r from-[#ffd85b] to-[#d4a020] text-[#250c58] font-bold text-sm md:text-base px-9 py-3 rounded-full shadow-xl transition-all duration-300 hover:scale-105 active:scale-95"
+          style={{ boxShadow: "0 4px 20px rgba(255,216,91,0.35)" }}
+        >
+          <span className="relative z-10 font-eng">Open Invitation</span>
+          <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        </button>
       </div>
     </div>
   );

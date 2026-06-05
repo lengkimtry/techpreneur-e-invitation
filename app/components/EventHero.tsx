@@ -61,18 +61,57 @@ export default function EventHero({ guestName, companyName, logoUrl }: EventHero
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen py-20 px-4 text-center">
         {/* Personalized guest block */}
         {guestName && (
-          <div className="mb-6 text-center">
+          <div className="mb-8 text-center w-full max-w-sm">
+            {/* Logo */}
             {logoUrl && (
-              <div className="flex justify-center mb-3">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl px-5 py-3 border border-white/15 inline-flex items-center justify-center" style={{ minHeight: "60px", maxWidth: "160px" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={logoUrl} alt="Company Logo" className="max-h-12 w-auto object-contain" />
+              <div className="flex justify-center mb-5">
+                <div className="relative">
+                  {/* Glow halo */}
+                  <div
+                    className="absolute -inset-4 rounded-3xl pointer-events-none"
+                    style={{ background: "radial-gradient(ellipse, rgba(255,216,91,0.25) 0%, transparent 70%)", filter: "blur(10px)" }}
+                  />
+                  {/* Logo card */}
+                  <div
+                    className="relative bg-white rounded-2xl flex items-center justify-center overflow-hidden"
+                    style={{
+                      width: "180px",
+                      height: "110px",
+                      boxShadow: "0 0 0 2px rgba(255,216,91,0.5), 0 12px 40px rgba(0,0,0,0.5)",
+                    }}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={logoUrl}
+                      alt="Logo"
+                      className="w-full h-full object-contain p-3"
+                    />
+                    {/* Gold shimmer overlay */}
+                    <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,216,91,0.06) 0%, transparent 60%)" }} />
+                  </div>
+                  {/* Corner dots */}
+                  <div className="absolute -top-1 -left-1 w-2.5 h-2.5 rounded-full bg-[#ffd85b] opacity-80" />
+                  <div className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#ffd85b] opacity-80" />
+                  <div className="absolute -bottom-1 -left-1 w-2.5 h-2.5 rounded-full bg-[#ffd85b] opacity-80" />
+                  <div className="absolute -bottom-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#ffd85b] opacity-80" />
                 </div>
               </div>
             )}
-            <p className="text-[#c8a0ff]/50 text-[10px] font-eng uppercase tracking-[0.3em] mb-1">Cordially Invited</p>
-            <p className="text-white font-bold text-2xl md:text-3xl font-eng">{guestName}</p>
-            {companyName && <p className="text-[#ffd85b] text-sm font-eng mt-1">{companyName}</p>}
+
+            {/* Divider */}
+            <div className="flex items-center gap-3 mb-3 mx-auto max-w-[200px]">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent to-[#ffd85b]/60" />
+              <span className="text-[#ffd85b] text-xs">✦</span>
+              <div className="flex-1 h-px bg-gradient-to-l from-transparent to-[#ffd85b]/60" />
+            </div>
+
+            <p className="text-[#c8a0ff]/60 text-[10px] font-eng uppercase tracking-[0.4em] mb-2">Cordially Invited</p>
+            <p className="text-white font-bold text-3xl md:text-4xl font-eng leading-tight">{guestName}</p>
+            {companyName && (
+              <div className="mt-3 inline-flex items-center gap-2 bg-white/10 rounded-full px-5 py-1.5 border border-[#ffd85b]/25">
+                <p className="text-[#ffd85b] text-sm font-eng font-semibold">{companyName}</p>
+              </div>
+            )}
           </div>
         )}
 
