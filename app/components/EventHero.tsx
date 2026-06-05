@@ -64,37 +64,33 @@ export default function EventHero({ guestName, companyName, logoUrl }: EventHero
           <div className="mb-8 text-center w-full max-w-sm">
             {/* Logo */}
             {logoUrl && (
-              <div className="flex justify-center mb-5">
-                <div className="relative">
-                  {/* Glow halo */}
-                  <div
-                    className="absolute -inset-4 rounded-3xl pointer-events-none"
-                    style={{ background: "radial-gradient(ellipse, rgba(255,216,91,0.25) 0%, transparent 70%)", filter: "blur(10px)" }}
+              <div className="mb-5 relative">
+                {/* Glow halo */}
+                <div
+                  className="absolute -inset-3 rounded-3xl pointer-events-none"
+                  style={{ background: "radial-gradient(ellipse, rgba(255,216,91,0.2) 0%, transparent 70%)", filter: "blur(12px)" }}
+                />
+                {/* Logo card — full width */}
+                <div
+                  className="relative bg-white rounded-2xl overflow-hidden w-full"
+                  style={{
+                    height: "180px",
+                    boxShadow: "0 0 0 2px rgba(255,216,91,0.5), 0 16px 48px rgba(0,0,0,0.55)",
+                  }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={logoUrl}
+                    alt="Logo"
+                    className="w-full h-full object-contain p-4"
                   />
-                  {/* Logo card */}
-                  <div
-                    className="relative bg-white rounded-2xl flex items-center justify-center overflow-hidden"
-                    style={{
-                      width: "180px",
-                      height: "110px",
-                      boxShadow: "0 0 0 2px rgba(255,216,91,0.5), 0 12px 40px rgba(0,0,0,0.5)",
-                    }}
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={logoUrl}
-                      alt="Logo"
-                      className="w-full h-full object-contain p-3"
-                    />
-                    {/* Gold shimmer overlay */}
-                    <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,216,91,0.06) 0%, transparent 60%)" }} />
-                  </div>
-                  {/* Corner dots */}
-                  <div className="absolute -top-1 -left-1 w-2.5 h-2.5 rounded-full bg-[#ffd85b] opacity-80" />
-                  <div className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#ffd85b] opacity-80" />
-                  <div className="absolute -bottom-1 -left-1 w-2.5 h-2.5 rounded-full bg-[#ffd85b] opacity-80" />
-                  <div className="absolute -bottom-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#ffd85b] opacity-80" />
+                  <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,216,91,0.05) 0%, transparent 60%)" }} />
                 </div>
+                {/* Corner dots */}
+                <div className="absolute -top-1 -left-1 w-3 h-3 rounded-full bg-[#ffd85b] opacity-80" />
+                <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#ffd85b] opacity-80" />
+                <div className="absolute -bottom-1 -left-1 w-3 h-3 rounded-full bg-[#ffd85b] opacity-80" />
+                <div className="absolute -bottom-1 -right-1 w-3 h-3 rounded-full bg-[#ffd85b] opacity-80" />
               </div>
             )}
 

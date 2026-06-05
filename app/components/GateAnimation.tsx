@@ -397,20 +397,20 @@ export default function GateAnimation({ onGateOpened, guestName, companyName, lo
       {/* ── Content overlay ── */}
       <div
         ref={contentRef}
-        className="absolute inset-0 z-40 flex flex-col items-center justify-center px-5 text-center opacity-0"
+        className="absolute inset-0 z-40 flex flex-col items-center justify-center px-4 text-center opacity-0"
       >
         {/* TechPreneur logo */}
-        <div className="mb-5">
+        <div className="mb-5 w-full max-w-sm">
           <div
-            className="bg-white rounded-2xl px-5 py-3"
+            className="bg-white rounded-2xl px-6 py-4"
             style={{ boxShadow: "0 0 32px rgba(255,216,91,0.2), 0 8px 24px rgba(0,0,0,0.4)" }}
           >
             <Image
               src="/images/logo.png"
               alt="TechPreneur"
-              width={220}
-              height={80}
-              className="h-14 md:h-16 w-auto object-contain"
+              width={260}
+              height={90}
+              className="h-16 md:h-18 w-auto object-contain mx-auto"
               priority
             />
           </div>
@@ -455,25 +455,25 @@ export default function GateAnimation({ onGateOpened, guestName, companyName, lo
 
         {/* Personalized guest name */}
         {guestName && (
-          <div className="mb-6 text-center px-5 py-5 rounded-2xl border border-[#ffd85b]/20 bg-white/5 max-w-sm w-full">
+          <div className="mb-6 text-center rounded-2xl border border-[#ffd85b]/20 bg-white/5 w-full max-w-sm overflow-hidden">
             {logoUrl && (
-              <div className="flex justify-center mb-4">
-                <div className="bg-white rounded-xl px-5 py-3 flex items-center justify-center" style={{ maxWidth: "160px", minHeight: "64px" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={logoUrl} alt="Company Logo" className="max-h-12 w-auto object-contain" />
-                </div>
+              <div className="w-full bg-white" style={{ height: "160px" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={logoUrl} alt="Company Logo" className="w-full h-full object-contain p-3" />
               </div>
             )}
-            <p className="text-[#c8a0ff]/60 text-xs font-eng uppercase tracking-[0.3em] mb-2">Cordially Invited</p>
-            <p className="text-[#ffd85b] font-bold text-2xl md:text-3xl font-eng">{guestName}</p>
-            {companyName && <p className="text-white/70 text-sm font-eng mt-1.5">{companyName}</p>}
+            <div className="px-5 py-4">
+              <p className="text-[#c8a0ff]/60 text-xs font-eng uppercase tracking-[0.3em] mb-2">Cordially Invited</p>
+              <p className="text-[#ffd85b] font-bold text-3xl md:text-4xl font-eng">{guestName}</p>
+              {companyName && <p className="text-white/70 text-base font-eng mt-2">{companyName}</p>}
+            </div>
           </div>
         )}
 
         <button
           onClick={handleOpen}
-          className="group relative overflow-hidden bg-gradient-to-r from-[#ffd85b] to-[#d4a020] text-[#250c58] font-bold text-base px-10 py-4 rounded-full shadow-xl transition-all duration-300 hover:scale-105 active:scale-95"
-          style={{ boxShadow: "0 4px 20px rgba(255,216,91,0.35)" }}
+          className="group relative overflow-hidden bg-gradient-to-r from-[#ffd85b] to-[#d4a020] text-[#250c58] font-bold text-lg px-12 py-4 rounded-full shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 w-full max-w-sm"
+          style={{ boxShadow: "0 4px 24px rgba(255,216,91,0.45)" }}
         >
           <span className="relative z-10 font-eng tracking-wide">Open Invitation</span>
           <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
