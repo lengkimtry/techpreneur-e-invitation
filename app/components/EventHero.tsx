@@ -79,7 +79,6 @@ export default function EventHero() {
         {/* Khmer + English subtitle */}
         <div className="flex flex-col items-center gap-0.5 mb-8">
           <p className="text-[#c8a0ff] font-khmer" style={{ fontSize: "15px", lineHeight: "1.5", fontWeight: 300 }}>
-            វគ្គចាប់ផ្ដើមបណ្ដុះបណ្ដាល
           </p>
           <p className="text-[#f4f1f8]/60 text-xs md:text-sm font-eng tracking-[0.22em] uppercase">
             Launching Ceremony
