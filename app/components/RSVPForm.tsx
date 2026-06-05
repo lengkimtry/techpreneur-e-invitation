@@ -2,21 +2,16 @@
 
 import { useState } from "react";
 
-const CheckCircleIcon = () => (
-  <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
-    <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clipRule="evenodd" />
+const CheckIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M6 12L10.2426 16.2426L18.727 7.75732" />
   </svg>
 );
 
-const XCircleIcon = () => (
-  <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
-    <path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z" clipRule="evenodd" />
-  </svg>
-);
-
-const CheckBadgeIcon = () => (
-  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
-    <path fillRule="evenodd" d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clipRule="evenodd" />
+const CrossIcon = ({ className }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M6.99486 7.00636C6.60433 7.39689 6.60433 8.03005 6.99486 8.42058L10.58 12.0057L6.99486 15.5909C6.60433 15.9814 6.60433 16.6146 6.99486 17.0051C7.38538 17.3956 8.01855 17.3956 8.40907 17.0051L11.9942 13.4199L15.5794 17.0051C15.9699 17.3956 16.6031 17.3956 16.9936 17.0051C17.3841 16.6146 17.3841 15.9814 16.9936 15.5909L13.4084 12.0057L16.9936 8.42059C17.3841 8.03007 17.3841 7.3969 16.9936 7.00638C16.603 6.61585 15.9699 6.61585 15.5794 7.00638L11.9942 10.5915L8.40907 7.00636C8.01855 6.61584 7.38538 6.61584 6.99486 7.00636Z" />
   </svg>
 );
 
@@ -70,22 +65,14 @@ export default function RSVPForm({ guestName, companyName }: RSVPFormProps) {
     return (
       <section id="rsvp" className="py-16 px-4" style={{ background: "#f4f1f8" }}>
         <div className="max-w-md mx-auto text-center">
-          <div
-            className="rounded-2xl p-10"
-            style={{ background: "linear-gradient(135deg, #340f80 0%, #4c139e 100%)" }}
-          >
-            <div className="flex justify-center mb-4">
-              {attending === "yes" ? (
-                <div className="w-16 h-16 rounded-full bg-[#ffd85b]/20 flex items-center justify-center">
-                  <CheckBadgeIcon />
-                </div>
-              ) : (
-                <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center">
-                  <svg className="w-8 h-8 text-[#c8a0ff]" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
-                  </svg>
-                </div>
-              )}
+          <div className="rounded-2xl p-10"
+            style={{ background: "linear-gradient(135deg, #340f80 0%, #4c139e 100%)" }}>
+            <div className="flex justify-center mb-5">
+              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center ${attending === "yes" ? "bg-[#ffd85b]/20" : "bg-white/10"}`}>
+                {attending === "yes"
+                  ? <CheckIcon className="w-8 h-8 text-[#ffd85b]" />
+                  : <CrossIcon className="w-7 h-7 text-[#c8a0ff]" />}
+              </div>
             </div>
             <h3 className="text-white font-bold text-xl font-eng mb-2">
               {attending === "yes" ? "See you there!" : "Thank you for letting us know"}
@@ -126,63 +113,83 @@ export default function RSVPForm({ guestName, companyName }: RSVPFormProps) {
           {/* Yes card */}
           <button
             onClick={() => setAttending("yes")}
-            className={`relative rounded-2xl p-5 border-2 text-left transition-all duration-200 overflow-hidden ${
+            className={`relative rounded-2xl p-5 border-2 text-left transition-all duration-250 overflow-hidden group ${
               attending === "yes"
-                ? "border-[#4c139e] shadow-lg shadow-[#4c139e]/20"
-                : "border-[#e8e0f0] bg-white hover:border-[#4c139e]/30 hover:shadow-md"
+                ? "border-transparent shadow-xl shadow-[#4c139e]/25"
+                : "border-[#e8e0f0] bg-white hover:border-[#4c139e]/40 hover:shadow-lg"
             }`}
-            style={
-              attending === "yes"
-                ? { background: "linear-gradient(135deg, #340f80 0%, #4c139e 100%)" }
-                : {}
-            }
+            style={attending === "yes"
+              ? { background: "linear-gradient(145deg, #2d0e70 0%, #4c139e 60%, #5a18b8 100%)" }
+              : {}}
           >
+            {/* glow blob */}
             {attending === "yes" && (
-              <div className="absolute inset-0 opacity-5"
-                style={{ backgroundImage: "radial-gradient(circle at 80% 20%, #ffd85b 0%, transparent 60%)" }} />
+              <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full pointer-events-none"
+                style={{ background: "radial-gradient(circle, rgba(255,216,91,0.18) 0%, transparent 70%)" }} />
             )}
-            <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-3 ${
-              attending === "yes" ? "bg-[#ffd85b]/20" : "bg-emerald-50"
+
+            {/* icon badge */}
+            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 transition-all duration-200 ${
+              attending === "yes"
+                ? "bg-[#ffd85b]/15 shadow-inner"
+                : "bg-emerald-50 group-hover:bg-emerald-100"
             }`}>
-              <span className={attending === "yes" ? "text-[#ffd85b]" : "text-emerald-500"}>
-                <CheckCircleIcon />
-              </span>
+              <CheckIcon className={`w-6 h-6 transition-colors duration-200 ${
+                attending === "yes" ? "text-[#ffd85b]" : "text-emerald-500"
+              }`} />
             </div>
-            <p className={`font-bold text-sm font-eng ${attending === "yes" ? "text-white" : "text-[#250c58]"}`}>
+
+            <p className={`font-bold text-sm font-eng leading-tight ${attending === "yes" ? "text-white" : "text-[#250c58]"}`}>
               Yes, I will attend
             </p>
-            <p className={`text-xs mt-0.5 font-eng ${attending === "yes" ? "text-white/60" : "text-[#4c139e]/40"}`}>
+            <p className={`text-[11px] mt-1 font-eng ${attending === "yes" ? "text-white/50" : "text-[#4c139e]/35"}`}>
               Count me in!
             </p>
+
+            {/* selected tick */}
+            {attending === "yes" && (
+              <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-[#ffd85b]/20 flex items-center justify-center">
+                <CheckIcon className="w-3 h-3 text-[#ffd85b]" />
+              </div>
+            )}
           </button>
 
           {/* No card */}
           <button
             onClick={() => setAttending("no")}
-            className={`relative rounded-2xl p-5 border-2 text-left transition-all duration-200 overflow-hidden ${
+            className={`relative rounded-2xl p-5 border-2 text-left transition-all duration-250 overflow-hidden group ${
               attending === "no"
-                ? "border-[#340f80] shadow-lg shadow-[#340f80]/20"
-                : "border-[#e8e0f0] bg-white hover:border-[#340f80]/30 hover:shadow-md"
+                ? "border-transparent shadow-xl shadow-[#340f80]/25"
+                : "border-[#e8e0f0] bg-white hover:border-red-200 hover:shadow-lg"
             }`}
-            style={
-              attending === "no"
-                ? { background: "linear-gradient(135deg, #1a0942 0%, #340f80 100%)" }
-                : {}
-            }
+            style={attending === "no"
+              ? { background: "linear-gradient(145deg, #130836 0%, #250c58 55%, #340f80 100%)" }
+              : {}}
           >
-            <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-3 ${
-              attending === "no" ? "bg-white/10" : "bg-red-50"
+            {/* icon badge */}
+            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 transition-all duration-200 ${
+              attending === "no"
+                ? "bg-white/8 shadow-inner"
+                : "bg-red-50 group-hover:bg-red-100"
             }`}>
-              <span className={attending === "no" ? "text-red-300" : "text-red-400"}>
-                <XCircleIcon />
-              </span>
+              <CrossIcon className={`w-5 h-5 transition-colors duration-200 ${
+                attending === "no" ? "text-red-300" : "text-red-400"
+              }`} />
             </div>
-            <p className={`font-bold text-sm font-eng ${attending === "no" ? "text-white" : "text-[#250c58]"}`}>
+
+            <p className={`font-bold text-sm font-eng leading-tight ${attending === "no" ? "text-white" : "text-[#250c58]"}`}>
               Unable to attend
             </p>
-            <p className={`text-xs mt-0.5 font-eng ${attending === "no" ? "text-white/60" : "text-[#4c139e]/40"}`}>
+            <p className={`text-[11px] mt-1 font-eng ${attending === "no" ? "text-white/50" : "text-[#4c139e]/35"}`}>
               I&apos;ll miss this one
             </p>
+
+            {/* selected tick */}
+            {attending === "no" && (
+              <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-white/10 flex items-center justify-center">
+                <CrossIcon className="w-2.5 h-2.5 text-red-300" />
+              </div>
+            )}
           </button>
         </div>
 
