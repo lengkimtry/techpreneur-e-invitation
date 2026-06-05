@@ -19,7 +19,12 @@ const BuildingIcon = () => (
   </svg>
 );
 
-export default function EventHero() {
+interface EventHeroProps {
+  guestName?: string;
+  companyName?: string;
+}
+
+export default function EventHero({ guestName, companyName }: EventHeroProps) {
   return (
     <section
       id="hero"
@@ -53,6 +58,15 @@ export default function EventHero() {
 
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen py-20 px-4 text-center">
+        {/* Personalized guest block */}
+        {guestName && (
+          <div className="mb-5 text-center">
+            <p className="text-[#c8a0ff]/50 text-[10px] font-eng uppercase tracking-[0.3em] mb-1">Cordially Invited</p>
+            <p className="text-white font-bold text-lg md:text-xl font-eng">{guestName}</p>
+            {companyName && <p className="text-[#ffd85b] text-sm font-eng mt-0.5">{companyName}</p>}
+          </div>
+        )}
+
         {/* Invitation badge */}
         <div className="mb-6">
           <div className="inline-flex items-center gap-2.5 border border-[#ffd85b]/40 px-4 py-1.5 rounded-full">
