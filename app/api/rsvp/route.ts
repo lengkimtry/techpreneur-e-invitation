@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export const runtime = "edge";
-
 export async function POST(req: NextRequest) {
   const webhookUrl = process.env.SHEETS_WEBHOOK_URL;
   if (!webhookUrl) {
