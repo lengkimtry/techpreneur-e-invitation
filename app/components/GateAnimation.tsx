@@ -459,9 +459,9 @@ export default function GateAnimation({ onGateOpened, guestName, companyName, lo
         {guestName && (
           <div className="mb-4 rounded-2xl border border-[#ffd85b]/30 bg-white/5 w-full max-w-sm overflow-hidden flex-shrink-0">
             {logoUrl && (
-              <div className="w-full" style={{ height: "200px" }}>
+              <div className="w-full">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={logoUrl} alt="Guest" className="w-full h-full object-cover object-center" />
+                <img src={logoUrl} alt="Guest" className="w-full h-auto block" />
               </div>
             )}
             <div className="px-5 py-4">

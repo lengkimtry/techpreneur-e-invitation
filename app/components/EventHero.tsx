@@ -70,11 +70,10 @@ export default function EventHero({ guestName, companyName, logoUrl }: EventHero
                   className="absolute -inset-3 rounded-3xl pointer-events-none"
                   style={{ background: "radial-gradient(ellipse, rgba(255,216,91,0.2) 0%, transparent 70%)", filter: "blur(12px)" }}
                 />
-                {/* Photo card — full width, taller */}
+                {/* Photo card — full width, natural height (no crop) */}
                 <div
                   className="relative rounded-2xl overflow-hidden w-full"
                   style={{
-                    height: "240px",
                     boxShadow: "0 0 0 2px rgba(255,216,91,0.5), 0 16px 48px rgba(0,0,0,0.55)",
                   }}
                 >
@@ -82,9 +81,9 @@ export default function EventHero({ guestName, companyName, logoUrl }: EventHero
                   <img
                     src={logoUrl}
                     alt="Guest"
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-auto block"
                   />
-                  <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent 55%, rgba(13,5,32,0.6) 100%)" }} />
+                  <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent 55%, rgba(13,5,32,0.5) 100%)" }} />
                 </div>
                 {/* Corner dots */}
                 <div className="absolute -top-1 -left-1 w-3 h-3 rounded-full bg-[#ffd85b] opacity-80" />
