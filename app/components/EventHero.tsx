@@ -58,11 +58,11 @@ export default function EventHero({ guestName, companyName, logoUrl }: EventHero
       <div className="absolute bottom-16 right-8 w-96 h-96 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(200,160,255,0.1) 0%, transparent 70%)" }} />
 
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen py-20 px-4 text-center">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen py-16 px-4 text-center">
         {/* Personalized guest block */}
         {guestName && (
-          <div className="mb-8 text-center w-full max-w-sm">
-            {/* Logo */}
+          <div className="mb-8 w-full max-w-md">
+            {/* Photo/logo */}
             {logoUrl && (
               <div className="mb-5 relative">
                 {/* Glow halo */}
@@ -70,21 +70,21 @@ export default function EventHero({ guestName, companyName, logoUrl }: EventHero
                   className="absolute -inset-3 rounded-3xl pointer-events-none"
                   style={{ background: "radial-gradient(ellipse, rgba(255,216,91,0.2) 0%, transparent 70%)", filter: "blur(12px)" }}
                 />
-                {/* Logo card — full width */}
+                {/* Photo card — full width, taller */}
                 <div
-                  className="relative bg-white rounded-2xl overflow-hidden w-full"
+                  className="relative rounded-2xl overflow-hidden w-full"
                   style={{
-                    height: "180px",
+                    height: "240px",
                     boxShadow: "0 0 0 2px rgba(255,216,91,0.5), 0 16px 48px rgba(0,0,0,0.55)",
                   }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={logoUrl}
-                    alt="Logo"
+                    alt="Guest"
                     className="w-full h-full object-cover object-top"
                   />
-                  <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg, rgba(255,216,91,0.05) 0%, transparent 60%)" }} />
+                  <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent 55%, rgba(13,5,32,0.6) 100%)" }} />
                 </div>
                 {/* Corner dots */}
                 <div className="absolute -top-1 -left-1 w-3 h-3 rounded-full bg-[#ffd85b] opacity-80" />
@@ -102,7 +102,7 @@ export default function EventHero({ guestName, companyName, logoUrl }: EventHero
             </div>
 
             <p className="text-[#c8a0ff]/60 text-xs font-eng uppercase tracking-[0.4em] mb-2">Cordially Invited</p>
-            <p className="text-white font-bold text-3xl md:text-4xl font-eng leading-tight">{guestName}</p>
+            <p className="text-white font-bold text-4xl md:text-5xl font-eng leading-tight">{guestName}</p>
             {companyName && (
               <div className="mt-3 inline-flex items-center gap-2 bg-white/10 rounded-full px-5 py-2 border border-[#ffd85b]/25">
                 <p className="text-[#ffd85b] text-base font-eng font-semibold">{companyName}</p>
