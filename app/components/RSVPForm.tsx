@@ -113,83 +113,51 @@ export default function RSVPForm({ guestName, companyName }: RSVPFormProps) {
           {/* Yes card */}
           <button
             onClick={() => setAttending("yes")}
-            className={`relative rounded-2xl p-5 border-2 text-left transition-all duration-250 overflow-hidden group ${
+            className={`rounded-2xl pt-7 pb-6 px-4 border-2 text-center transition-all duration-200 overflow-hidden ${
               attending === "yes"
-                ? "border-transparent shadow-xl shadow-[#4c139e]/25"
-                : "border-[#e8e0f0] bg-white hover:border-[#4c139e]/40 hover:shadow-lg"
+                ? "border-transparent shadow-xl shadow-[#4c139e]/30"
+                : "border-[#e8e0f0] bg-white hover:border-[#4c139e]/30 hover:shadow-md"
             }`}
             style={attending === "yes"
-              ? { background: "linear-gradient(145deg, #2d0e70 0%, #4c139e 60%, #5a18b8 100%)" }
+              ? { background: "linear-gradient(150deg, #2d0e70 0%, #4c139e 100%)" }
               : {}}
           >
-            {/* glow blob */}
-            {attending === "yes" && (
-              <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full pointer-events-none"
-                style={{ background: "radial-gradient(circle, rgba(255,216,91,0.18) 0%, transparent 70%)" }} />
-            )}
-
-            {/* icon badge */}
-            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 transition-all duration-200 ${
-              attending === "yes"
-                ? "bg-[#ffd85b]/15 shadow-inner"
-                : "bg-emerald-50 group-hover:bg-emerald-100"
+            <div className={`w-16 h-16 rounded-full mx-auto flex items-center justify-center mb-4 ${
+              attending === "yes" ? "bg-[#ffd85b]/20" : "bg-[#4c139e]/8"
             }`}>
-              <CheckIcon className={`w-6 h-6 transition-colors duration-200 ${
-                attending === "yes" ? "text-[#ffd85b]" : "text-emerald-500"
-              }`} />
+              <CheckIcon className={`w-8 h-8 ${attending === "yes" ? "text-[#ffd85b]" : "text-[#4c139e]"}`} />
             </div>
-
-            <p className={`font-bold text-sm font-eng leading-tight ${attending === "yes" ? "text-white" : "text-[#250c58]"}`}>
+            <p className={`font-bold text-sm font-eng ${attending === "yes" ? "text-white" : "text-[#250c58]"}`}>
               Yes, I will attend
             </p>
-            <p className={`text-[11px] mt-1 font-eng ${attending === "yes" ? "text-white/50" : "text-[#4c139e]/35"}`}>
+            <p className={`text-[11px] mt-1 font-eng ${attending === "yes" ? "text-[#ffd85b]/70" : "text-[#4c139e]/40"}`}>
               Count me in!
             </p>
-
-            {/* selected tick */}
-            {attending === "yes" && (
-              <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-[#ffd85b]/20 flex items-center justify-center">
-                <CheckIcon className="w-3 h-3 text-[#ffd85b]" />
-              </div>
-            )}
           </button>
 
           {/* No card */}
           <button
             onClick={() => setAttending("no")}
-            className={`relative rounded-2xl p-5 border-2 text-left transition-all duration-250 overflow-hidden group ${
+            className={`rounded-2xl pt-7 pb-6 px-4 border-2 text-center transition-all duration-200 overflow-hidden ${
               attending === "no"
-                ? "border-transparent shadow-xl shadow-[#340f80]/25"
-                : "border-[#e8e0f0] bg-white hover:border-red-200 hover:shadow-lg"
+                ? "border-transparent shadow-xl shadow-red-300/30"
+                : "border-[#e8e0f0] bg-white hover:border-red-200 hover:shadow-md"
             }`}
             style={attending === "no"
-              ? { background: "linear-gradient(145deg, #130836 0%, #250c58 55%, #340f80 100%)" }
+              ? { background: "linear-gradient(150deg, #3d0808 0%, #7f1d1d 100%)" }
               : {}}
           >
-            {/* icon badge */}
-            <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 transition-all duration-200 ${
-              attending === "no"
-                ? "bg-white/8 shadow-inner"
-                : "bg-red-50 group-hover:bg-red-100"
+            <div className={`w-16 h-16 rounded-full mx-auto flex items-center justify-center mb-4 ${
+              attending === "no" ? "bg-white/10" : "bg-red-50"
             }`}>
-              <CrossIcon className={`w-5 h-5 transition-colors duration-200 ${
-                attending === "no" ? "text-red-300" : "text-red-400"
-              }`} />
+              <CrossIcon className={`w-6 h-6 ${attending === "no" ? "text-red-300" : "text-red-400"}`} />
             </div>
-
-            <p className={`font-bold text-sm font-eng leading-tight ${attending === "no" ? "text-white" : "text-[#250c58]"}`}>
+            <p className={`font-bold text-sm font-eng ${attending === "no" ? "text-white" : "text-[#250c58]"}`}>
               Unable to attend
             </p>
-            <p className={`text-[11px] mt-1 font-eng ${attending === "no" ? "text-white/50" : "text-[#4c139e]/35"}`}>
+            <p className={`text-[11px] mt-1 font-eng ${attending === "no" ? "text-red-300/70" : "text-[#4c139e]/40"}`}>
               I&apos;ll miss this one
             </p>
-
-            {/* selected tick */}
-            {attending === "no" && (
-              <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-white/10 flex items-center justify-center">
-                <CrossIcon className="w-2.5 h-2.5 text-red-300" />
-              </div>
-            )}
           </button>
         </div>
 
