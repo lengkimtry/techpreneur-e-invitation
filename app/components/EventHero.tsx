@@ -66,14 +66,14 @@ export default function EventHero({ guestName, companyName, logoUrl }: EventHero
             {logoUrl && (
               <div className="mb-5 flex justify-center">
                 <div
-                  className="bg-white rounded-2xl px-8 py-5 flex items-center justify-center"
+                  className="bg-white rounded-2xl px-10 py-6 flex items-center justify-center"
                   style={{ boxShadow: "0 0 0 2px rgba(255,216,91,0.45), 0 12px 36px rgba(0,0,0,0.45)" }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={logoUrl}
                     alt="Company Logo"
-                    className="max-h-16 sm:max-h-20 w-auto max-w-[200px] object-contain block"
+                    className="max-h-24 sm:max-h-28 w-auto max-w-[240px] object-contain block"
                   />
                 </div>
               </div>
