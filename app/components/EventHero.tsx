@@ -62,34 +62,20 @@ export default function EventHero({ guestName, companyName, logoUrl }: EventHero
         {/* Personalized guest block */}
         {guestName && (
           <div className="mb-8 w-full max-w-md">
-            {/* Photo/logo */}
+            {/* Company logo */}
             {logoUrl && (
-              <div className="mb-5 relative">
-                {/* Glow halo */}
+              <div className="mb-5 flex justify-center">
                 <div
-                  className="absolute -inset-3 rounded-3xl pointer-events-none"
-                  style={{ background: "radial-gradient(ellipse, rgba(255,216,91,0.2) 0%, transparent 70%)", filter: "blur(12px)" }}
-                />
-                {/* Photo card — full width, natural height (no crop) */}
-                <div
-                  className="relative rounded-2xl overflow-hidden w-full"
-                  style={{
-                    boxShadow: "0 0 0 2px rgba(255,216,91,0.5), 0 16px 48px rgba(0,0,0,0.55)",
-                  }}
+                  className="bg-white rounded-2xl px-8 py-5 flex items-center justify-center"
+                  style={{ boxShadow: "0 0 0 2px rgba(255,216,91,0.45), 0 12px 36px rgba(0,0,0,0.45)" }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={logoUrl}
-                    alt="Guest"
-                    className="w-full h-auto block"
+                    alt="Company Logo"
+                    className="max-h-16 sm:max-h-20 w-auto max-w-[200px] object-contain block"
                   />
-                  <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent 55%, rgba(13,5,32,0.5) 100%)" }} />
                 </div>
-                {/* Corner dots */}
-                <div className="absolute -top-1 -left-1 w-3 h-3 rounded-full bg-[#ffd85b] opacity-80" />
-                <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#ffd85b] opacity-80" />
-                <div className="absolute -bottom-1 -left-1 w-3 h-3 rounded-full bg-[#ffd85b] opacity-80" />
-                <div className="absolute -bottom-1 -right-1 w-3 h-3 rounded-full bg-[#ffd85b] opacity-80" />
               </div>
             )}
 

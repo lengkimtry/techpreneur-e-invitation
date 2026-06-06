@@ -459,15 +459,19 @@ export default function GateAnimation({ onGateOpened, guestName, companyName, lo
         {guestName && (
           <div className="mb-4 rounded-2xl border border-[#ffd85b]/30 bg-white/5 w-full max-w-sm overflow-hidden flex-shrink-0">
             {logoUrl && (
-              <div className="w-full">
+              <div className="flex justify-center items-center bg-white/95 px-6 py-4 border-b border-[#ffd85b]/20">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={logoUrl} alt="Guest" className="w-full h-auto block" />
+                <img
+                  src={logoUrl}
+                  alt="Company Logo"
+                  className="max-h-16 sm:max-h-20 w-auto max-w-[200px] object-contain"
+                />
               </div>
             )}
             <div className="px-5 py-4">
               <p className="text-[#c8a0ff]/60 text-xs font-eng uppercase tracking-[0.3em] mb-2">Cordially Invited</p>
-              <p className="text-[#ffd85b] font-bold text-3xl md:text-4xl font-eng">{guestName}</p>
-              {companyName && <p className="text-white/70 text-base font-eng mt-2">{companyName}</p>}
+              <p className="text-[#ffd85b] font-bold text-2xl sm:text-3xl md:text-4xl font-eng">{guestName}</p>
+              {companyName && <p className="text-white/70 text-sm sm:text-base font-eng mt-2">{companyName}</p>}
             </div>
           </div>
         )}
