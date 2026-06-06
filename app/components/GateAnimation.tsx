@@ -459,12 +459,20 @@ export default function GateAnimation({ onGateOpened, guestName, companyName, lo
         {guestName && (
           <div className="mb-4 w-full max-w-sm flex-shrink-0">
             {logoUrl && (
-              <div className="w-full overflow-hidden rounded-2xl mb-3" style={{ boxShadow: "0 0 0 2px rgba(255,216,91,0.4), 0 12px 36px rgba(0,0,0,0.5)" }}>
+              <div className="relative mx-auto mb-4 w-[160px] sm:w-[190px]">
+                {/* L-shaped corner brackets — no radius conflict, works for any logo */}
+                <div className="absolute -top-2 -left-2 w-5 h-5 border-t-2 border-l-2 border-[#ffd85b]/80" />
+                <div className="absolute -top-2 -right-2 w-5 h-5 border-t-2 border-r-2 border-[#ffd85b]/80" />
+                <div className="absolute -bottom-2 -left-2 w-5 h-5 border-b-2 border-l-2 border-[#ffd85b]/80" />
+                <div className="absolute -bottom-2 -right-2 w-5 h-5 border-b-2 border-r-2 border-[#ffd85b]/80" />
+                {/* Glow behind */}
+                <div className="absolute -inset-4 pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(255,216,91,0.2) 0%, transparent 70%)", filter: "blur(10px)" }} />
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={logoUrl}
                   alt="Company Logo"
-                  className="w-full h-44 sm:h-52 object-cover block"
+                  className="relative w-full h-auto block"
+                  style={{ filter: "drop-shadow(0 4px 20px rgba(0,0,0,0.55))" }}
                 />
               </div>
             )}

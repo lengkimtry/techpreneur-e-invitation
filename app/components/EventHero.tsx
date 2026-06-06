@@ -64,30 +64,21 @@ export default function EventHero({ guestName, companyName, logoUrl }: EventHero
           <div className="mb-8 w-full max-w-md">
             {/* Company logo */}
             {logoUrl && (
-              <div className="mb-5 relative mx-auto w-[220px] sm:w-[300px] md:w-full md:max-w-md">
-                {/* Glow halo */}
-                <div
-                  className="absolute -inset-3 rounded-3xl pointer-events-none"
-                  style={{ background: "radial-gradient(ellipse, rgba(255,216,91,0.2) 0%, transparent 70%)", filter: "blur(12px)" }}
+              <div className="mb-5 relative mx-auto w-[160px] sm:w-[200px] md:w-[240px]">
+                {/* L-shaped corner brackets */}
+                <div className="absolute -top-2 -left-2 w-5 h-5 border-t-2 border-l-2 border-[#ffd85b]/80" />
+                <div className="absolute -top-2 -right-2 w-5 h-5 border-t-2 border-r-2 border-[#ffd85b]/80" />
+                <div className="absolute -bottom-2 -left-2 w-5 h-5 border-b-2 border-l-2 border-[#ffd85b]/80" />
+                <div className="absolute -bottom-2 -right-2 w-5 h-5 border-b-2 border-r-2 border-[#ffd85b]/80" />
+                {/* Glow */}
+                <div className="absolute -inset-4 pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(255,216,91,0.2) 0%, transparent 70%)", filter: "blur(12px)" }} />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={logoUrl}
+                  alt="Company Logo"
+                  className="relative w-full h-auto block"
+                  style={{ filter: "drop-shadow(0 6px 24px rgba(0,0,0,0.6))" }}
                 />
-                {/* Logo card */}
-                <div
-                  className="relative rounded-2xl overflow-hidden w-full"
-                  style={{ boxShadow: "0 0 0 2px rgba(255,216,91,0.5), 0 16px 48px rgba(0,0,0,0.55)" }}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={logoUrl}
-                    alt="Company Logo"
-                    className="w-full h-auto block"
-                  />
-                  <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent 55%, rgba(13,5,32,0.5) 100%)" }} />
-                </div>
-                {/* Corner dots */}
-                <div className="absolute -top-1 -left-1 w-3 h-3 rounded-full bg-[#ffd85b] opacity-80" />
-                <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#ffd85b] opacity-80" />
-                <div className="absolute -bottom-1 -left-1 w-3 h-3 rounded-full bg-[#ffd85b] opacity-80" />
-                <div className="absolute -bottom-1 -right-1 w-3 h-3 rounded-full bg-[#ffd85b] opacity-80" />
               </div>
             )}
 
