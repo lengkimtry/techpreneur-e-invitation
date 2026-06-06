@@ -401,17 +401,17 @@ export default function GateAnimation({ onGateOpened, guestName, companyName, lo
         style={{ overflowY: "auto", WebkitOverflowScrolling: "touch" } as React.CSSProperties}
       >
         {/* TechPreneur logo — compact */}
-        <div className="mb-4 w-full max-w-xs flex-shrink-0">
+        <div className="mb-3 flex-shrink-0">
           <div
-            className="bg-white rounded-xl px-5 py-3"
-            style={{ boxShadow: "0 0 24px rgba(255,216,91,0.15), 0 4px 16px rgba(0,0,0,0.35)" }}
+            className="bg-white rounded-lg px-4 py-2"
+            style={{ boxShadow: "0 0 16px rgba(255,216,91,0.12), 0 3px 10px rgba(0,0,0,0.3)" }}
           >
             <Image
               src="/images/logo.png"
               alt="TechPreneur"
               width={200}
               height={70}
-              className="h-12 w-auto object-contain mx-auto"
+              className="h-8 w-auto object-contain mx-auto"
               priority
             />
           </div>
