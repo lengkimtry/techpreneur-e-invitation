@@ -502,8 +502,8 @@ export default function GateAnimation({ onGateOpened, guestName, companyName, lo
                 style={{ animation: "shimmer 2.2s ease-in-out infinite", left: "-4rem" }}
               />
             </span>
-            <span className="relative z-10 font-eng tracking-wide flex items-center justify-center gap-2">
-              ✉ Open Invitation
+            <span className="relative z-10 font-eng tracking-wide">
+              Open Invitation
             </span>
             <div className="absolute inset-0 rounded-full bg-white/15 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </button>
