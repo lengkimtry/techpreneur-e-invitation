@@ -53,6 +53,10 @@
   .font-niradei {
     font-family: "Niradei", sans-serif;
   }
+   .font-khmer-display-1 {
+    font-family: "Moul", "Moulpali", "Kontumruy Pro", serif;
+  }
+
 }
 
 * {

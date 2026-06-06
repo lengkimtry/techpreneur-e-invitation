@@ -52,7 +52,7 @@ export default function EventAgenda() {
             Program
           </span>
           <h2 className="text-[#250c58] font-bold text-2xl md:text-3xl mt-1">
-            <span className="font-khmer-display" style={{ lineHeight: "2" }}>
+            <span className="font-khmer-display-1" style={{ lineHeight: "2" }}>
               កម្មវិធី
             </span>
             &nbsp;|&nbsp;
@@ -64,11 +64,11 @@ export default function EventAgenda() {
         {/* Table */}
         <div className="rounded-2xl overflow-hidden border border-[#e8e0f0] shadow-sm">
           {/* Header row */}
-          <div className="grid grid-cols-[110px_1fr] md:grid-cols-[140px_1fr] bg-[#4c139e] text-white">
-            <div className="px-3 md:px-4 py-3 text-xs md:text-sm font-semibold uppercase tracking-wide text-center font-eng">
+          <div className="grid grid-cols-[90px_1fr] sm:grid-cols-[110px_1fr] md:grid-cols-[140px_1fr] bg-[#4c139e] text-white">
+            <div className="px-2 sm:px-3 md:px-4 py-3 text-[11px] sm:text-xs md:text-sm font-semibold uppercase tracking-wide text-center font-eng">
               Time
             </div>
-            <div className="px-3 md:px-4 py-3 text-xs md:text-sm font-semibold uppercase tracking-wide border-l border-white/20 font-eng">
+            <div className="px-2 sm:px-3 md:px-4 py-3 text-[11px] sm:text-xs md:text-sm font-semibold uppercase tracking-wide border-l border-white/20 font-eng">
               Activity
             </div>
           </div>
@@ -79,7 +79,7 @@ export default function EventAgenda() {
             return (
               <div
                 key={i}
-                className={`grid grid-cols-[110px_1fr] md:grid-cols-[140px_1fr] border-b border-[#e8e0f0] last:border-0 ${
+                className={`grid grid-cols-[90px_1fr] sm:grid-cols-[110px_1fr] md:grid-cols-[140px_1fr] border-b border-[#e8e0f0] last:border-0 ${
                   isHighlight
                     ? "bg-[#ffd85b]/15"
                     : i % 2 === 0
@@ -88,14 +88,14 @@ export default function EventAgenda() {
                 }`}
               >
                 <div
-                  className={`px-3 md:px-4 py-3 text-xs md:text-sm font-semibold text-center border-r border-[#e8e0f0] flex items-center justify-center font-eng ${
+                  className={`px-2 sm:px-3 md:px-4 py-2.5 sm:py-3 text-[10px] sm:text-xs md:text-sm font-semibold text-center border-r border-[#e8e0f0] flex items-center justify-center font-eng leading-tight ${
                     isHighlight ? "text-[#340f80]" : "text-[#4c139e]"
                   }`}
                 >
                   {row.time}
                 </div>
                 <div
-                  className={`px-3 md:px-4 py-3 text-xs md:text-sm leading-relaxed ${
+                  className={`px-2 sm:px-3 md:px-4 py-2.5 sm:py-3 text-[11px] sm:text-xs md:text-sm leading-relaxed ${
                     isHighlight ? "text-[#250c58] font-semibold" : "text-[#340f80]"
                   }`}
                 >

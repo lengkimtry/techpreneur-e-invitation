@@ -58,7 +58,7 @@ export default function EventHero({ guestName, companyName, logoUrl }: EventHero
       <div className="absolute bottom-16 right-8 w-96 h-96 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(200,160,255,0.1) 0%, transparent 70%)" }} />
 
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen py-16 px-4 text-center">
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen py-10 sm:py-16 px-4 text-center">
         {/* Personalized guest block */}
         {guestName && (
           <div className="mb-8 w-full max-w-md">
@@ -101,7 +101,7 @@ export default function EventHero({ guestName, companyName, logoUrl }: EventHero
             </div>
 
             <p className="text-[#c8a0ff]/60 text-xs font-eng uppercase tracking-[0.4em] mb-2">Cordially Invited</p>
-            <p className="text-white font-bold text-4xl md:text-5xl font-eng leading-tight">{guestName}</p>
+            <p className="text-white font-bold text-3xl sm:text-4xl md:text-5xl font-eng leading-tight">{guestName}</p>
             {companyName && (
               <div className="mt-3 inline-flex items-center gap-2 bg-white/10 rounded-full px-5 py-2 border border-[#ffd85b]/25">
                 <p className="text-[#ffd85b] text-base font-eng font-semibold">{companyName}</p>
@@ -152,7 +152,7 @@ export default function EventHero({ guestName, companyName, logoUrl }: EventHero
 
         {/* Details card — SVG icons */}
         <div
-          className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/15 max-w-sm w-full mb-9 text-left space-y-4 shadow-xl"
+          className="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-6 border border-white/15 max-w-sm w-full mb-9 text-left space-y-3 sm:space-y-4 shadow-xl"
           style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.08)" }}
         >
           <div className="flex items-start gap-4">

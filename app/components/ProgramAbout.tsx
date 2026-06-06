@@ -80,16 +80,16 @@ export default function ProgramAbout() {
         </div>
 
         {/* Skills — Heroicon SVGs */}
-        <div className="grid grid-cols-3 gap-3 mb-7">
+        <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-7">
           {skills.map(({ Icon, label }) => (
             <div
               key={label}
-              className="bg-white rounded-xl p-4 md:p-5 text-center shadow-sm border border-[#e8e0f0] flex flex-col items-center gap-2"
+              className="bg-white rounded-xl p-3 sm:p-4 md:p-5 text-center shadow-sm border border-[#e8e0f0] flex flex-col items-center gap-1.5 sm:gap-2"
             >
-              <span className="text-[#4c139e]">
+              <span className="text-[#4c139e] scale-75 sm:scale-100 origin-center">
                 <Icon />
               </span>
-              <span className="text-[#340f80] text-[11px] md:text-xs font-semibold leading-tight text-center">
+              <span className="text-[#340f80] text-[10px] sm:text-[11px] md:text-xs font-semibold leading-tight text-center">
                 {label}
               </span>
             </div>
@@ -97,17 +97,17 @@ export default function ProgramAbout() {
         </div>
 
         {/* Stats — Heroicon SVGs */}
-        <div className="grid grid-cols-3 gap-3 mb-10">
+        <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-10">
           {highlights.map(({ Icon, num, label }) => (
             <div
               key={num}
-              className="bg-gradient-to-br from-[#340f80] to-[#4c139e] rounded-xl p-4 md:p-5 text-center shadow-md"
+              className="bg-gradient-to-br from-[#340f80] to-[#4c139e] rounded-xl p-3 sm:p-4 md:p-5 text-center shadow-md"
             >
-              <div className="text-[#ffd85b] mb-1.5">
+              <div className="text-[#ffd85b] mb-1 scale-75 sm:scale-100 origin-center">
                 <Icon />
               </div>
-              <div className="text-[#ffd85b] font-bold text-lg md:text-2xl font-eng">{num}</div>
-              <div className="text-white/70 text-[11px] md:text-xs mt-0.5">{label}</div>
+              <div className="text-[#ffd85b] font-bold text-base sm:text-lg md:text-2xl font-eng">{num}</div>
+              <div className="text-white/70 text-[10px] sm:text-[11px] md:text-xs mt-0.5">{label}</div>
             </div>
           ))}
         </div>

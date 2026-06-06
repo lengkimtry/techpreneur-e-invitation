@@ -99,17 +99,17 @@ export default function AdminClient({ adminKey }: Props) {
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 mt-8 space-y-8">
+      <div className="max-w-4xl mx-auto px-4 mt-6 space-y-6">
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 gap-2 sm:gap-4">
           {[
             { label: "Total Responses", value: responses.length },
             { label: "Attending", value: attending },
             { label: "Not Attending", value: notAttending },
           ].map(({ label, value }) => (
-            <div key={label} className="bg-white rounded-2xl p-5 border border-[#e8e0f0] text-center shadow-sm">
-              <p className="text-[#4c139e] font-bold text-3xl">{value}</p>
-              <p className="text-[#340f80]/60 text-xs font-semibold uppercase tracking-wide mt-1">{label}</p>
+            <div key={label} className="bg-white rounded-2xl p-3 sm:p-5 border border-[#e8e0f0] text-center shadow-sm">
+              <p className="text-[#4c139e] font-bold text-2xl sm:text-3xl">{value}</p>
+              <p className="text-[#340f80]/60 text-[10px] sm:text-xs font-semibold uppercase tracking-wide mt-1">{label}</p>
             </div>
           ))}
         </div>
@@ -247,38 +247,63 @@ export default function AdminClient({ adminKey }: Props) {
           )}
 
           {responses.length > 0 && (
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="bg-[#4c139e] text-white text-xs uppercase tracking-wide">
-                    {["Time", "Status", "Name", "Company", "Position", "Phone", "Reason"].map((h) => (
-                      <th key={h} className="px-3 py-2.5 text-left font-semibold whitespace-nowrap first:rounded-l-lg last:rounded-r-lg">
-                        {h}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {responses.map((row, i) => (
-                    <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-[#f4f1f8]"}>
-                      <td className="px-3 py-2.5 text-[#340f80]/60 whitespace-nowrap text-xs">
-                        {new Date(row.timestamp).toLocaleString()}
-                      </td>
-                      <td className="px-3 py-2.5">
-                        <span className={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold ${row.attending === "yes" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-600"}`}>
-                          {row.attending === "yes" ? "Attending" : "Not Attending"}
-                        </span>
-                      </td>
-                      <td className="px-3 py-2.5 font-semibold text-[#250c58]">{row.name}</td>
-                      <td className="px-3 py-2.5 text-[#340f80]">{row.company}</td>
-                      <td className="px-3 py-2.5 text-[#340f80]/70">{row.position}</td>
-                      <td className="px-3 py-2.5 text-[#340f80]">{row.phone}</td>
-                      <td className="px-3 py-2.5 text-[#340f80]/60 max-w-[160px] truncate">{row.reason}</td>
+            <>
+              {/* Mobile card layout */}
+              <div className="sm:hidden space-y-3">
+                {responses.map((row, i) => (
+                  <div key={i} className="rounded-xl border border-[#e8e0f0] bg-white p-4 space-y-2">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold ${row.attending === "yes" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-600"}`}>
+                        {row.attending === "yes" ? "Attending" : "Not Attending"}
+                      </span>
+                      <span className="text-[#340f80]/50 text-[11px]">{new Date(row.timestamp).toLocaleString()}</span>
+                    </div>
+                    <p className="text-[#250c58] font-semibold text-sm">{row.name}</p>
+                    {row.company && <p className="text-[#340f80] text-xs">{row.company}{row.position ? ` · ${row.position}` : ""}</p>}
+                    {row.phone && (
+                      <p className="text-[#4c139e] text-xs font-mono">{row.phone}</p>
+                    )}
+                    {row.reason && (
+                      <p className="text-[#340f80]/60 text-xs italic border-t border-[#e8e0f0] pt-2 mt-1">{row.reason}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* Desktop table layout */}
+              <div className="hidden sm:block overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-[#4c139e] text-white text-xs uppercase tracking-wide">
+                      {["Time", "Status", "Name", "Company", "Position", "Phone", "Reason"].map((h) => (
+                        <th key={h} className="px-3 py-2.5 text-left font-semibold whitespace-nowrap first:rounded-l-lg last:rounded-r-lg">
+                          {h}
+                        </th>
+                      ))}
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody>
+                    {responses.map((row, i) => (
+                      <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-[#f4f1f8]"}>
+                        <td className="px-3 py-2.5 text-[#340f80]/60 whitespace-nowrap text-xs">
+                          {new Date(row.timestamp).toLocaleString()}
+                        </td>
+                        <td className="px-3 py-2.5">
+                          <span className={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold ${row.attending === "yes" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-600"}`}>
+                            {row.attending === "yes" ? "Attending" : "Not Attending"}
+                          </span>
+                        </td>
+                        <td className="px-3 py-2.5 font-semibold text-[#250c58]">{row.name}</td>
+                        <td className="px-3 py-2.5 text-[#340f80]">{row.company}</td>
+                        <td className="px-3 py-2.5 text-[#340f80]/70">{row.position}</td>
+                        <td className="px-3 py-2.5 text-[#340f80]">{row.phone}</td>
+                        <td className="px-3 py-2.5 text-[#340f80]/60 max-w-[160px] truncate">{row.reason}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
           )}
         </div>
       </div>
