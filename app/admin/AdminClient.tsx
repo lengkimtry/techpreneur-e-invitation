@@ -24,6 +24,8 @@ export default function AdminClient({ adminKey }: Props) {
   const [logoUploadError, setLogoUploadError] = useState("");
   const [generatedUrl, setGeneratedUrl] = useState("");
   const [copied, setCopied] = useState(false);
+  const [generating, setGenerating] = useState(false);
+  const [generateError, setGenerateError] = useState("");
   const [responses, setResponses] = useState<RSVPRow[]>([]);
   const [loadingResponses, setLoadingResponses] = useState(false);
   const [responseError, setResponseError] = useState("");
@@ -47,14 +49,32 @@ export default function AdminClient({ adminKey }: Props) {
     setLogoUploading(false);
   };
 
-  const generateUrl = () => {
-    const base = typeof window !== "undefined" ? window.location.origin : "";
-    const params = new URLSearchParams();
-    if (guestName.trim()) params.set("name", guestName.trim());
-    if (companyName.trim()) params.set("company", companyName.trim());
-    if (logoUrl.trim()) params.set("logo", logoUrl.trim());
-    setGeneratedUrl(`${base}/?${params.toString()}`);
+  const generateUrl = async () => {
+    setGenerating(true);
+    setGenerateError("");
     setCopied(false);
+    try {
+      const res = await fetch("/api/guests", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          key: adminKey,
+          name: guestName.trim(),
+          company: companyName.trim(),
+          logo_url: logoUrl.trim(),
+        }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error((err as { error?: string }).error ?? "Failed to generate link");
+      }
+      const data = await res.json() as { slug: string };
+      const base = typeof window !== "undefined" ? window.location.origin : "";
+      setGeneratedUrl(`${base}/g/${data.slug}`);
+    } catch (e: unknown) {
+      setGenerateError(e instanceof Error ? e.message : "Failed to generate link");
+    }
+    setGenerating(false);
   };
 
   const copyUrl = async () => {
@@ -199,11 +219,21 @@ export default function AdminClient({ adminKey }: Props) {
           </div>
           <button
             onClick={generateUrl}
-            disabled={!guestName.trim()}
-            className="bg-gradient-to-r from-[#4c139e] to-[#340f80] text-white font-bold px-6 py-2.5 rounded-xl text-sm hover:opacity-90 transition-opacity disabled:opacity-40"
+            disabled={!guestName.trim() || generating}
+            className="bg-gradient-to-r from-[#4c139e] to-[#340f80] text-white font-bold px-6 py-2.5 rounded-xl text-sm hover:opacity-90 transition-opacity disabled:opacity-40 flex items-center gap-2"
           >
-            Generate Link
+            {generating && (
+              <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
+            )}
+            {generating ? "Generating…" : "Generate Link"}
           </button>
+
+          {generateError && (
+            <p className="text-red-500 text-xs mt-2">{generateError}</p>
+          )}
 
           {generatedUrl && (
             <div className="mt-4 p-4 bg-[#f4f1f8] rounded-xl border border-[#e8e0f0]">
