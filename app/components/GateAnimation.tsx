@@ -397,51 +397,51 @@ export default function GateAnimation({ onGateOpened, guestName, companyName, lo
       {/* ── Content overlay ── */}
       <div
         ref={contentRef}
-        className="absolute inset-0 z-40 flex flex-col items-center px-4 pt-8 pb-6 text-center opacity-0"
+        className="absolute inset-0 z-40 flex flex-col items-center px-4 pt-4 pb-4 text-center opacity-0"
         style={{ overflowY: "auto", WebkitOverflowScrolling: "touch" } as React.CSSProperties}
       >
         {/* TechPreneur logo — compact */}
-        <div className="mb-3 flex-shrink-0">
+        <div className="mb-2 flex-shrink-0">
           <div
-            className="bg-white rounded-lg px-3 py-1.5"
-            style={{ boxShadow: "0 0 16px rgba(255,216,91,0.12), 0 3px 10px rgba(0,0,0,0.3)" }}
+            className="bg-white rounded-md px-3 py-1"
+            style={{ boxShadow: "0 0 12px rgba(255,216,91,0.1), 0 2px 8px rgba(0,0,0,0.3)" }}
           >
             <Image
               src="/images/logo.png"
               alt="TechPreneur"
-              width={160}
-              height={56}
-              className="h-7 w-auto object-contain mx-auto"
+              width={140}
+              height={48}
+              className="h-6 w-auto object-contain mx-auto"
               priority
             />
           </div>
         </div>
 
         {/* Divider */}
-        <div className="flex items-center gap-3 mb-3 w-full max-w-[220px] flex-shrink-0">
+        <div className="flex items-center gap-3 mb-2 w-full max-w-[220px] flex-shrink-0">
           <div className="flex-1 h-px bg-gradient-to-r from-transparent to-[#ffd85b]" />
           <span className="text-[#ffd85b]">✦</span>
           <div className="flex-1 h-px bg-gradient-to-l from-transparent to-[#ffd85b]" />
         </div>
 
-        <div className="flex items-center gap-2 mb-3 border border-[#ffd85b]/35 px-4 py-1.5 rounded-full flex-shrink-0">
+        <div className="flex items-center gap-2 mb-2 border border-[#ffd85b]/35 px-4 py-1 rounded-full flex-shrink-0">
           <span className="text-[#c8a0ff] text-sm uppercase tracking-[0.25em] font-eng">Invitation</span>
           <span className="text-[#ffd85b]/50 text-sm">·</span>
           <span className="text-[#c8a0ff] font-khmer" style={{ fontSize: "16px", lineHeight: "1" }}>សូមគោរពអញ្ជើញ</span>
         </div>
 
-        <h1 className="text-white font-bold text-2xl md:text-3xl leading-snug mb-0.5 max-w-xs flex-shrink-0">
+        <h1 className="text-white font-bold text-2xl md:text-3xl leading-snug mb-0 max-w-xs flex-shrink-0">
           Techpreneur Bootcamp 2026
         </h1>
-        <p className="text-[#c8a0ff] text-base md:text-lg mb-4 flex-shrink-0">Launching Ceremony</p>
+        <p className="text-[#c8a0ff] text-sm md:text-base mb-2 flex-shrink-0">Launching Ceremony</p>
 
-        {/* Details card — text-left to fix alignment */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 mb-4 border border-[#ffd85b]/30 max-w-sm w-full space-y-2.5 text-left flex-shrink-0">
+        {/* Details card */}
+        <div className="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-2 mb-3 border border-[#ffd85b]/30 max-w-sm w-full space-y-2 text-left flex-shrink-0">
           <div className="flex items-center gap-3">
             <svg className="w-5 h-5 text-[#ffd85b] flex-shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 9v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
             </svg>
-            <span className="text-[#ffd85b] font-semibold text-sm font-eng">June 25th, 2026 &nbsp;·&nbsp; 09:00 — 12:00</span>
+            <span className="text-[#ffd85b] font-semibold text-sm font-eng">June 25th, 2026 &nbsp;·&nbsp; 09:00 AM — 12:00 PM</span>
           </div>
           <div className="flex items-start gap-3">
             <svg className="w-5 h-5 text-[#f4f1f8] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
@@ -457,9 +457,9 @@ export default function GateAnimation({ onGateOpened, guestName, companyName, lo
 
         {/* Personalized guest card */}
         {guestName && (
-          <div className="mb-4 w-full max-w-sm flex-shrink-0">
+          <div className="mb-2 w-full max-w-sm flex-shrink-0">
             {logoUrl && (
-              <div className="relative mx-auto mb-4 w-[160px] sm:w-[190px]">
+              <div className="relative mx-auto mb-2 w-[140px] sm:w-[170px]">
                 {/* L-shaped corner brackets — no radius conflict, works for any logo */}
                 <div className="absolute -top-2 -left-2 w-5 h-5 border-t-2 border-l-2 border-[#ffd85b]/80" />
                 <div className="absolute -top-2 -right-2 w-5 h-5 border-t-2 border-r-2 border-[#ffd85b]/80" />
