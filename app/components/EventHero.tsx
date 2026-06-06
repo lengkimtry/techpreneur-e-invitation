@@ -72,16 +72,16 @@ export default function EventHero({ guestName, companyName, logoUrl }: EventHero
                 />
                 {/* Logo card */}
                 <div
-                  className="relative rounded-2xl overflow-hidden w-full bg-white"
+                  className="relative rounded-2xl overflow-hidden w-full"
                   style={{ boxShadow: "0 0 0 2px rgba(255,216,91,0.5), 0 16px 48px rgba(0,0,0,0.55)" }}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={logoUrl}
                     alt="Company Logo"
-                    className="w-full h-28 sm:h-36 md:h-44 object-contain p-4 block"
+                    className="w-full h-auto block"
                   />
-                  <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent 55%, rgba(13,5,32,0.3) 100%)" }} />
+                  <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent 55%, rgba(13,5,32,0.5) 100%)" }} />
                 </div>
                 {/* Corner dots */}
                 <div className="absolute -top-1 -left-1 w-3 h-3 rounded-full bg-[#ffd85b] opacity-80" />
