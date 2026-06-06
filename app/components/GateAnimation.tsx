@@ -484,12 +484,8 @@ export default function GateAnimation({ onGateOpened, guestName, companyName, lo
           </svg>
         </div>
 
-        {/* Button with pulse ring */}
-        <div className="relative w-full max-w-sm flex-shrink-0 flex items-center justify-center">
-          {/* Pulse rings */}
-          <span className="absolute inset-0 rounded-full animate-ping opacity-20 bg-[#ffd85b]" style={{ animationDuration: "1.6s" }} />
-          <span className="absolute inset-0 rounded-full animate-ping opacity-10 bg-[#ffd85b]" style={{ animationDuration: "2.2s", animationDelay: "0.4s" }} />
-
+        {/* Button */}
+        <div className="relative w-full max-w-sm flex-shrink-0">
           <button
             onClick={handleOpen}
             className="group relative overflow-hidden bg-gradient-to-r from-[#ffd85b] via-[#ffe88a] to-[#d4a020] text-[#250c58] font-bold text-lg px-12 py-4 rounded-full shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 w-full"
