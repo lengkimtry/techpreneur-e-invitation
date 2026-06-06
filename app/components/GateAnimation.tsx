@@ -403,15 +403,15 @@ export default function GateAnimation({ onGateOpened, guestName, companyName, lo
         {/* TechPreneur logo — compact */}
         <div className="mb-3 flex-shrink-0">
           <div
-            className="bg-white rounded-lg px-4 py-2"
+            className="bg-white rounded-lg px-3 py-1.5"
             style={{ boxShadow: "0 0 16px rgba(255,216,91,0.12), 0 3px 10px rgba(0,0,0,0.3)" }}
           >
             <Image
               src="/images/logo.png"
               alt="TechPreneur"
-              width={200}
-              height={70}
-              className="h-8 w-auto object-contain mx-auto"
+              width={160}
+              height={56}
+              className="h-7 w-auto object-contain mx-auto"
               priority
             />
           </div>
