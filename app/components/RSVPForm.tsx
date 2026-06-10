@@ -9,11 +9,6 @@ const CheckIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const CrossIcon = ({ className }: { className?: string }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-    <path d="M6.99486 7.00636C6.60433 7.39689 6.60433 8.03005 6.99486 8.42058L10.58 12.0057L6.99486 15.5909C6.60433 15.9814 6.60433 16.6146 6.99486 17.0051C7.38538 17.3956 8.01855 17.3956 8.40907 17.0051L11.9942 13.4199L15.5794 17.0051C15.9699 17.3956 16.6031 17.3956 16.9936 17.0051C17.3841 16.6146 17.3841 15.9814 16.9936 15.5909L13.4084 12.0057L16.9936 8.42059C17.3841 8.03007 17.3841 7.3969 16.9936 7.00638C16.603 6.61585 15.9699 6.61585 15.5794 7.00638L11.9942 10.5915L8.40907 7.00636C8.01855 6.61584 7.38538 6.61584 6.99486 7.00636Z" />
-  </svg>
-);
 
 interface RSVPFormProps {
   guestName?: string;
@@ -21,7 +16,7 @@ interface RSVPFormProps {
 }
 
 export default function RSVPForm({ guestName, companyName }: RSVPFormProps) {
-  const [attending, setAttending] = useState<"yes" | "no" | null>(null);
+  const [attending] = useState<"yes" | "no" | null>("yes");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -30,19 +25,14 @@ export default function RSVPForm({ guestName, companyName }: RSVPFormProps) {
     company: companyName || "",
     position: "",
     phone: "",
-    reason: "",
   });
 
   const set = (field: string, value: string) =>
     setForm((prev) => ({ ...prev, [field]: value }));
 
   const handleSubmit = async () => {
-    if (attending === "yes" && (!form.name.trim() || !form.phone.trim())) {
+    if (!form.name.trim() || !form.phone.trim()) {
       setError("Please fill in your name and phone number.");
-      return;
-    }
-    if (attending === "no" && !form.reason.trim()) {
-      setError("Please provide a reason.");
       return;
     }
     setError("");
@@ -209,113 +199,55 @@ export default function RSVPForm({ guestName, companyName }: RSVPFormProps) {
           )}
         </div>
 
-        {/* Yes / No cards */}
-        <div className="grid grid-cols-2 gap-4 mb-7">
-          {/* Yes card */}
-          <button
-            onClick={() => setAttending("yes")}
-            className={`rounded-2xl pt-7 pb-6 px-4 border-2 text-center transition-all duration-200 overflow-hidden ${
-              attending === "yes"
-                ? "border-transparent shadow-xl shadow-[#4c139e]/30"
-                : "border-[#e8e0f0] bg-white hover:border-[#4c139e]/30 hover:shadow-md"
-            }`}
-            style={attending === "yes"
-              ? { background: "linear-gradient(150deg, #2d0e70 0%, #4c139e 100%)" }
-              : {}}
+        {/* Attending confirmation */}
+        <div className="mb-7">
+          <div
+            className="rounded-2xl pt-7 pb-6 px-4 border-transparent shadow-xl shadow-[#4c139e]/30 text-center"
+            style={{ background: "linear-gradient(150deg, #2d0e70 0%, #4c139e 100%)" }}
           >
-            <div className={`w-16 h-16 rounded-full mx-auto flex items-center justify-center mb-4 ${
-              attending === "yes" ? "bg-[#ffd85b]/20" : "bg-[#4c139e]/8"
-            }`}>
-              <CheckIcon className={`w-8 h-8 ${attending === "yes" ? "text-[#ffd85b]" : "text-[#4c139e]"}`} />
+            <div className="w-16 h-16 rounded-full mx-auto flex items-center justify-center mb-4 bg-[#ffd85b]/20">
+              <CheckIcon className="w-8 h-8 text-[#ffd85b]" />
             </div>
-            <p className={`font-bold text-sm font-eng ${attending === "yes" ? "text-white" : "text-[#250c58]"}`}>
-              Yes, I will attend
-            </p>
-            <p className={`text-[11px] mt-1 font-eng ${attending === "yes" ? "text-[#ffd85b]/70" : "text-[#4c139e]/40"}`}>
-              Count me in!
-            </p>
-          </button>
-
-          {/* No card */}
-          <button
-            onClick={() => setAttending("no")}
-            className={`rounded-2xl pt-7 pb-6 px-4 border-2 text-center transition-all duration-200 overflow-hidden ${
-              attending === "no"
-                ? "border-transparent shadow-xl shadow-red-300/30"
-                : "border-[#e8e0f0] bg-white hover:border-red-200 hover:shadow-md"
-            }`}
-            style={attending === "no"
-              ? { background: "linear-gradient(150deg, #3d0808 0%, #7f1d1d 100%)" }
-              : {}}
-          >
-            <div className={`w-16 h-16 rounded-full mx-auto flex items-center justify-center mb-4 ${
-              attending === "no" ? "bg-white/10" : "bg-red-50"
-            }`}>
-              <CrossIcon className={`w-6 h-6 ${attending === "no" ? "text-red-300" : "text-red-400"}`} />
-            </div>
-            <p className={`font-bold text-sm font-eng ${attending === "no" ? "text-white" : "text-[#250c58]"}`}>
-              Unable to attend
-            </p>
-            <p className={`text-[11px] mt-1 font-eng ${attending === "no" ? "text-red-300/70" : "text-[#4c139e]/40"}`}>
-              I&apos;ll miss this one
-            </p>
-          </button>
+            <p className="font-bold text-sm font-eng text-white">Yes, I will attend</p>
+            <p className="text-[11px] mt-1 font-eng text-[#ffd85b]/70">Count me in!</p>
+          </div>
         </div>
 
         {/* Form fields */}
-        {attending && (
-          <div className="bg-white rounded-2xl p-6 border border-[#e8e0f0] shadow-sm space-y-4">
-            {attending === "yes" ? (
+        <div className="bg-white rounded-2xl p-6 border border-[#e8e0f0] shadow-sm space-y-4">
+          <Field label="Full Name *" value={form.name} onChange={(v) => set("name", v)} placeholder="Your full name" />
+          <Field label="School / University" value={form.company} onChange={(v) => set("company", v)} placeholder="Your school or university" />
+          <Field label="Major / Year of Study" value={form.position} onChange={(v) => set("position", v)} placeholder="e.g. Computer Science, Year 3" />
+          <Field label="Phone Number *" value={form.phone} onChange={(v) => set("phone", v)} placeholder="+855 xx xxx xxx" type="tel" />
+
+          {error && (
+            <div className="flex items-center gap-2 text-red-500 text-xs font-eng bg-red-50 rounded-lg px-3 py-2">
+              <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z" clipRule="evenodd" />
+              </svg>
+              {error}
+            </div>
+          )}
+
+          <button
+            onClick={handleSubmit}
+            disabled={loading}
+            className="w-full text-white font-bold py-3 rounded-xl font-eng text-sm tracking-wide shadow-md hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2"
+            style={{ background: "linear-gradient(135deg, #4c139e 0%, #340f80 100%)" }}
+          >
+            {loading ? (
               <>
-                <Field label="Full Name *" value={form.name} onChange={(v) => set("name", v)} placeholder="Your full name" />
-                <Field label="Company / Organization" value={form.company} onChange={(v) => set("company", v)} placeholder="Your organization" />
-                <Field label="Position / Title" value={form.position} onChange={(v) => set("position", v)} placeholder="e.g. CEO, Director" />
-                <Field label="Phone Number *" value={form.phone} onChange={(v) => set("phone", v)} placeholder="+855 xx xxx xxx" type="tel" />
+                <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                </svg>
+                Submitting…
               </>
             ) : (
-              <div>
-                <label className="block text-[#340f80] text-xs font-semibold font-eng uppercase tracking-wide mb-1.5">
-                  Reason for not attending
-                </label>
-                <textarea
-                  rows={3}
-                  value={form.reason}
-                  onChange={(e) => set("reason", e.target.value)}
-                  placeholder="Please let us know why you can't make it..."
-                  className="w-full border border-[#e8e0f0] rounded-xl px-4 py-3 text-sm text-[#250c58] placeholder-[#c8a0ff]/60 focus:outline-none focus:border-[#4c139e] font-eng resize-none"
-                />
-              </div>
+              "Submit Response"
             )}
-
-            {error && (
-              <div className="flex items-center gap-2 text-red-500 text-xs font-eng bg-red-50 rounded-lg px-3 py-2">
-                <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                  <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z" clipRule="evenodd" />
-                </svg>
-                {error}
-              </div>
-            )}
-
-            <button
-              onClick={handleSubmit}
-              disabled={loading}
-              className="w-full text-white font-bold py-3 rounded-xl font-eng text-sm tracking-wide shadow-md hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2"
-              style={{ background: "linear-gradient(135deg, #4c139e 0%, #340f80 100%)" }}
-            >
-              {loading ? (
-                <>
-                  <svg className="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                  </svg>
-                  Submitting…
-                </>
-              ) : (
-                "Submit Response"
-              )}
-            </button>
-          </div>
-        )}
+          </button>
+        </div>
       </div>
     </section>
   );

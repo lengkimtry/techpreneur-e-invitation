@@ -149,12 +149,12 @@ export default function AdminClient({ adminKey }: Props) {
               />
             </div>
             <div>
-              <label className="block text-[#340f80] text-xs font-semibold uppercase tracking-wide mb-1.5">Company / Organization</label>
+              <label className="block text-[#340f80] text-xs font-semibold uppercase tracking-wide mb-1.5">School / University</label>
               <input
                 type="text"
                 value={companyName}
                 onChange={(e) => setCompanyName(e.target.value)}
-                placeholder="e.g. Ministry of Education"
+                placeholder="e.g. RUPP, ITC, AUPP"
                 className="w-full border border-[#e8e0f0] rounded-xl px-4 py-2.5 text-sm text-[#250c58] focus:outline-none focus:border-[#4c139e]"
               />
             </div>
@@ -305,7 +305,7 @@ export default function AdminClient({ adminKey }: Props) {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="bg-[#4c139e] text-white text-xs uppercase tracking-wide">
-                      {["Time", "Status", "Name", "Company", "Position", "Phone", "Reason"].map((h) => (
+                      {["Time", "Status", "Name", "School", "Major / Year", "Phone", "Reason"].map((h) => (
                         <th key={h} className="px-3 py-2.5 text-left font-semibold whitespace-nowrap first:rounded-l-lg last:rounded-r-lg">
                           {h}
                         </th>

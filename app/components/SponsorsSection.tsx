@@ -20,7 +20,7 @@ export default function SponsorsSection() {
         {/* Sponsor image */}
         <div className="bg-white rounded-2xl p-5 md:p-7 shadow-sm border border-[#e8e0f0]">
           <Image
-            src="/images/sponser_and_partner.png"
+            src="/images/sponsor_and_partner.png"
             alt="Technology Partner, Strategic Partner, Industry Partner, Venue Partner, Media Partner"
             width={1200}
             height={220}
