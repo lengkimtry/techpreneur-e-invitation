@@ -55,8 +55,7 @@ export default function RSVPForm({ guestName, companyName }: RSVPFormProps) {
     return (
       <section id="rsvp" className="py-16 px-4" style={{ background: "#f4f1f8" }}>
         <div className="max-w-md mx-auto">
-          {attending === "yes" ? (
-            <div className="relative rounded-3xl overflow-hidden text-center"
+          <div className="relative rounded-3xl overflow-hidden text-center"
               style={{ background: "linear-gradient(155deg, #1a0942 0%, #2d0e70 35%, #4c139e 75%, #340f80 100%)" }}>
 
               {/* Circuit pattern */}
@@ -160,20 +159,6 @@ export default function RSVPForm({ guestName, companyName }: RSVPFormProps) {
                 </svg>
               </div>
             </div>
-          ) : (
-            <div className="rounded-2xl p-10 text-center"
-              style={{ background: "linear-gradient(135deg, #340f80 0%, #4c139e 100%)" }}>
-              <div className="flex justify-center mb-5">
-                <div className="w-16 h-16 rounded-2xl flex items-center justify-center bg-white/10">
-                  <CrossIcon className="w-7 h-7 text-[#c8a0ff]" />
-                </div>
-              </div>
-              <h3 className="text-white font-bold text-xl font-eng mb-2">Thank you for letting us know</h3>
-              <p className="text-[#c8a0ff] text-sm font-eng leading-relaxed">
-                We appreciate your response and hope to see you at future events.
-              </p>
-            </div>
-          )}
         </div>
       </section>
     );
